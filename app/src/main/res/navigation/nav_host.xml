@@ -31,5 +31,17 @@
         <argument
             android:name="restaurant"
             app:argType="com.kodluyoruz.yahnifood.models.RestaurantsItem" />
+        <action
+            android:id="@+id/action_restaurantDetailFragment_to_mealDetailFragment"
+            app:destination="@id/mealDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mealDetailFragment"
+        android:name="com.kodluyoruz.yahnifood.ui.meal_detail.MealDetailFragment"
+        android:label="MealDetailFragment"
+        tools:layout="@layout/fragment_meal_detail">
+        <argument
+            android:name="clickedFood"
+            app:argType="com.kodluyoruz.yahnifood.models.Menu" />
     </fragment>
 </navigation>

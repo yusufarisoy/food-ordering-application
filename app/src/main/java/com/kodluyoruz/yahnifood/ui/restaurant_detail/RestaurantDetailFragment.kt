@@ -4,8 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kodluyoruz.yahnifood.IMealOnClick
+import com.kodluyoruz.yahnifood.R
 import com.kodluyoruz.yahnifood.databinding.FragmentRestaurantDetailBinding
 import com.kodluyoruz.yahnifood.models.Menu
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
@@ -44,6 +48,7 @@ class RestaurantDetailFragment : BaseFragment() {
 
         binding.recyclerViewFoodList.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewFoodList.adapter = adapter
+
     }
 
     private fun fetchData() {
@@ -53,5 +58,12 @@ class RestaurantDetailFragment : BaseFragment() {
             foodList.add(Menu(i, "Lorem ipsum dolor sit amet.", "Hamburger", "https://www.burgerking.com.tr/cmsfiles/products/big-king-jr-menu-1.png?v=173", i * 10.15))
         }
         adapter.setDataset(foodList)
+        adapter.addListener(object : IMealOnClick{
+            override fun onClick(menu: Menu) {
+                val action = RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToMealDetailFragment(menu)
+                findNavController().navigate(action)
+            }
+
+        })
     }
 }
