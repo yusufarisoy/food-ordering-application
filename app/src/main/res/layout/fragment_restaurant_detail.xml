@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.restaurant_detail.RestaurantDetailFragment">
+
+    <ImageView
+        android:id="@+id/imageViewBackground"
+        app:srcCompat="@drawable/restaurant_background"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewRestaurantLogo"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/burger_logo"
+        app:shapeAppearanceOverlay="@style/CircularImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginStart="@dimen/margin_32"
+        android:elevation="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewRestaurantName"
+        tools:text="Burger King"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        app:layout_constraintStart_toEndOf="@id/imageViewRestaurantLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewBackground" />
+
+    <TextView
+        android:id="@+id/textViewRestaurantScore"
+        tools:text="4/5"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        app:layout_constraintStart_toEndOf="@id/imageViewRestaurantLogo"
+        app:layout_constraintTop_toBottomOf="@id/imageViewBackground"
+        app:drawableEndCompat="@drawable/ic_star" />
+
+    <TextView
+        android:id="@+id/textViewRestaurantAddressLabel"
+        android:text="@string/address_label"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_32"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/textViewRestaurantMinDeliveryPriceLabel"
+        app:layout_constraintTop_toBottomOf="@id/imageViewRestaurantLogo" />
+    <TextView
+        android:id="@+id/textViewRestaurantAddress"
+        tools:text="Kadikoy, Caferaga"
+        android:textAlignment="center"
+        android:paddingHorizontal="@dimen/margin_8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textViewRestaurantAddressLabel"
+        app:layout_constraintStart_toStartOf="@id/textViewRestaurantAddressLabel"
+        app:layout_constraintEnd_toEndOf="@id/textViewRestaurantAddressLabel" />
+
+    <TextView
+        android:id="@+id/textViewRestaurantMinDeliveryPriceLabel"
+        android:text="@string/min_delivery_price_label"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/textViewRestaurantAddressLabel"
+        app:layout_constraintEnd_toStartOf="@id/textViewRestaurantDeliveryTimeLabel"
+        app:layout_constraintTop_toTopOf="@id/textViewRestaurantAddressLabel" />
+    <TextView
+        android:id="@+id/textViewRestaurantMinDeliveryPrice"
+        tools:text="40 TL"
+        android:textAlignment="center"
+        android:paddingHorizontal="@dimen/margin_8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textViewRestaurantMinDeliveryPriceLabel"
+        app:layout_constraintStart_toStartOf="@id/textViewRestaurantMinDeliveryPriceLabel"
+        app:layout_constraintEnd_toEndOf="@id/textViewRestaurantMinDeliveryPriceLabel" />
+
+    <TextView
+        android:id="@+id/textViewRestaurantDeliveryTimeLabel"
+        android:text="@string/min_delivery_time_label"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/textViewRestaurantMinDeliveryPriceLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textViewRestaurantAddressLabel" />
+    <TextView
+        android:id="@+id/textViewRestaurantDeliveryTime"
+        tools:text="30dk"
+        android:textAlignment="center"
+        android:paddingHorizontal="@dimen/margin_8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textViewRestaurantDeliveryTimeLabel"
+        app:layout_constraintStart_toStartOf="@id/textViewRestaurantDeliveryTimeLabel"
+        app:layout_constraintEnd_toEndOf="@id/textViewRestaurantDeliveryTimeLabel" />
+
+    <TextView
+        android:id="@+id/textViewMenuTitle"
+        android:text="@string/restaurant_menu_title"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_64"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewRestaurantAddress" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFoodList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewMenuTitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">YahniFood</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="address_label">Adres</string>
+    <string name="min_delivery_price_label">Min. Siparis</string>
+    <string name="min_delivery_time_label">Teslim Suresi</string>
+    <string name="restaurant_menu_title">Restoran Menüsü</string>
 </resources>

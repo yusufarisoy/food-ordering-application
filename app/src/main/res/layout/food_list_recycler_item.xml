@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginHorizontal="@dimen/margin_4"
+    app:cardElevation="5dp"
+    app:cardCornerRadius="8dp"
+    android:layout_marginTop="@dimen/margin_16"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingVertical="@dimen/margin_4"
+        android:paddingStart="@dimen/margin_16"
+        android:paddingEnd="@dimen/margin_4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewFoodName"
+            tools:text="Big King"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/imageViewFood" />
+
+        <TextView
+            android:id="@+id/textViewFoodIngredients"
+            android:textSize="13sp"
+            tools:text="Ekmek, Köfte, Soğan, Kıvırcık, Cheddar peyniri, Patates kızartması, Coca-Cola"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/margin_4"
+            android:paddingEnd="@dimen/margin_16"
+            app:layout_constraintTop_toBottomOf="@id/textViewFoodName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/imageViewFood"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/textViewFoodPrice"
+            tools:text="33.90 TL"
+            android:textSize="16sp"
+            android:textColor="@color/dark_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/textViewFoodIngredients"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageViewFood"
+            app:srcCompat="@color/black"
+            android:scaleType="centerCrop"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
