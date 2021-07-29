@@ -54,7 +54,7 @@ class RetrofitHelper {
 
 
     fun listUsers(callBack: UserResponseHandler) {
-        service.getUsers().enqueue(object : Callback<UsersResponse> {
+        service.getUser(1).enqueue(object : Callback<UsersResponse> {
             override fun onResponse(
                 call: Call<UsersResponse>,
                 response: Response<UsersResponse>
@@ -77,7 +77,7 @@ class RetrofitHelper {
     }
 
     fun listRestaurants(callBack: RestaurantResponseHandler) {
-        service.getRestaurants().enqueue(object : Callback<RestaurantsResponse> {
+        service.getRestaurants("Kadikoy").enqueue(object : Callback<RestaurantsResponse> {
             override fun onResponse(
                 call: Call<RestaurantsResponse>,
                 response: Response<RestaurantsResponse>
@@ -103,7 +103,7 @@ class RetrofitHelper {
 
 
     fun listOrders(callBack: OrderResponseHandler) {
-        service.getOrders().enqueue(object : Callback<OrdersResponse> {
+        service.getOrders(1).enqueue(object : Callback<OrdersResponse> {
             override fun onResponse(
                 call: Call<OrdersResponse>,
                 response: Response<OrdersResponse>
