@@ -15,6 +15,7 @@ import com.kodluyoruz.yahnifood.ui.base.BaseFragment
 class HomeFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHomeBinding
+    private val mealList = ArrayList<Menu>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -25,17 +26,23 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViews()
+        fetchData()
     }
 
     private fun initViews() {
-        val list = emptyList<Menu>()
-
         binding.btnDetail.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToRestaurantDetailFragment(
                 RestaurantsItem(Address("", "Sureyyaplaji", "Istanbul", "Maltepe", ""), 45, 1, "",
-                    list, 25, "Burger King",
+                    mealList, 25, "Burger King",
                     Owner("", "", "", "", ""), "4441423", 4, "")
             ))
+        }
+    }
+
+    private fun fetchData() {
+        //TODO: GET from API
+        for(i in 1..3) {
+            mealList.add(Menu(i, "Lorem ipsum dolor sit amet.", "Hamburger", "https://www.burgerking.com.tr/cmsfiles/products/big-king-jr-menu-1.png?v=173", i * 10.15))
         }
     }
 }

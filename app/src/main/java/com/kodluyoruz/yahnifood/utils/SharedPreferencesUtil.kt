@@ -6,11 +6,11 @@ import android.util.Log
 
 object SharedPreferencesUtil {
     const val TOKEN = "com.kodluyoruz.yahnifood.TOKEN"
+    const val FIRST_LAUNCH_TOKEN = "com.kodluyoruz.yahnifood.first_launch"
     private var sharedPreferences: SharedPreferences? = null
 
     fun initSharedPreferences(context: Context) {
-        sharedPreferences =
-            context.getSharedPreferences("sharedPreferencesUtil", Context.MODE_PRIVATE)
+        sharedPreferences = context.getSharedPreferences("sharedPreferencesUtil", Context.MODE_PRIVATE)
         sharedPreferences?.registerOnSharedPreferenceChangeListener { sharedPreferences, key ->
             Log.v("SharedPref", "$key changed ${sharedPreferences.all}")
         }
@@ -30,10 +30,20 @@ object SharedPreferencesUtil {
         }
     }
 
-
-
     fun getString(key: String, defaultVal: String = ""): String {
         return sharedPreferences?.getString(key, defaultVal) ?: ""
+    }
+
+    fun saveBoolean(key: String, value: Boolean) {
+        sharedPreferences?.let {
+            val editor = it.edit()
+            editor.putBoolean(key, value)
+            editor.apply()
+        }
+    }
+
+    fun getBoolean(key: String, defaultVal: Boolean = false): Boolean {
+        return sharedPreferences?.getBoolean(key, defaultVal) ?: true
     }
 
     fun saveToken(value: String) {
