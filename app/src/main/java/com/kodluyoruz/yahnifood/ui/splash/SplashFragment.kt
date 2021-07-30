@@ -25,8 +25,8 @@ class SplashFragment : BaseFragment() {
         val viewModelFactory = SplashViewModelFactory()
         viewModel = ViewModelProvider(this, viewModelFactory).get(SplashViewModel::class.java)
 
-        viewModel.handleNavigation()
         setObservers()
+        viewModel.handleAppLaunch()
     }
 
     private fun setObservers() {
@@ -34,12 +34,10 @@ class SplashFragment : BaseFragment() {
             if (it != null) {
                 when(it) {
                     true -> {
-                        //TODO: Navigate to OnBoarding
-                        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment())
-                        Log.v("SplashFragment", "First Launch")
+                        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToMainOnBoardingFragment())
                         viewModel.saveFirstLaunch()
                     }
-                    false -> findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment())
+                    else -> findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment())
                 }
                 viewModel.navigationDone()
             }

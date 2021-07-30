@@ -12,7 +12,7 @@ class SplashViewModel : ViewModel() {
 
     fun isFirstLaunch(): LiveData<Boolean> = this.firstLaunch
 
-    fun handleNavigation() {
+    fun handleAppLaunch() {
         Handler().postDelayed({
             this.firstLaunch.value = SharedPreferencesUtil.getBoolean(SharedPreferencesUtil.FIRST_LAUNCH_TOKEN, true)
         }, 1000)
