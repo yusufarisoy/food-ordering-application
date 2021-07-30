@@ -7,13 +7,13 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Address(
     @SerializedName("add_date")
-    val add_date: String,
+    var add_date: String,
     @SerializedName("address")
-    val address: String,
+    var address: String,
     @SerializedName("city")
-    val city: String,
+    var city: String,
     @SerializedName("district")
-    val district: String,
+    var district: String,
     @SerializedName("last_update")
-    val last_update: String
+    var last_update: String
 ): Parcelable

@@ -7,25 +7,25 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class RestaurantsItem(
     @SerializedName("address")
-    val address: Address,
+    var address: Address,
     @SerializedName("average_delivery_time")
-    val average_delivery_time: Int,
+    var average_delivery_time: Int,
     @SerializedName("id")
-    val id: Int,
+    var id: Int,
     @SerializedName("photo_url")
-    val photo_url: String,
+    var photo_url: String,
     @SerializedName("menu")
-    val menu: List<Menu>?,
+    var menu: List<Menu>?,
     @SerializedName("min_order")
-    val min_order: Int,
+    var min_order: Int,
     @SerializedName("name")
-    val name: String,
+    var name: String,
     @SerializedName("owner")
-    val owner: Owner,
+    var owner: Owner,
     @SerializedName("phone_number")
-    val phone_number: String,
+    var phone_number: String,
     @SerializedName("point")
-    val point: Int?,
+    var point: Int?,
     @SerializedName("review")
-    val review: String?
+    var review: String?
 ): Parcelable

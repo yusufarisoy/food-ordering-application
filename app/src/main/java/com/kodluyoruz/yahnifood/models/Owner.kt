@@ -7,13 +7,13 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Owner(
     @SerializedName("email")
-    val email: String,
+    var email: String,
     @SerializedName("name")
-    val name: String,
+    var name: String,
     @SerializedName("password")
-    val password: String,
+    var password: String,
     @SerializedName("phone_number")
-    val phone_number: String,
+    var phone_number: String,
     @SerializedName("surname")
-    val surname: String
+    var surname: String
 ): Parcelable

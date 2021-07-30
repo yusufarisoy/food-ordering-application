@@ -4,17 +4,17 @@ import com.google.gson.annotations.SerializedName
 
 data class OrdersItem(
     @SerializedName("date")
-    val date: String,
+    var date: String,
     @SerializedName("id")
-    val id: Int,
+    var id: Int,
     @SerializedName("note")
-    val note: String,
+    var note: String,
     @SerializedName("order_food_list")
-    val order_food_list: List<OrderFood>,
+    var order_food_list: List<OrderFood>,
     @SerializedName("restaurant_id")
-    val restaurant_id: Int,
+    var restaurant_id: Int,
     @SerializedName("status")
-    val status: Int,
+    var status: Int,
     @SerializedName("user_id")
-    val user_id: Int
+    var user_id: Int
 )

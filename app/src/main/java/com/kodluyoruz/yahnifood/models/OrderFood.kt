@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class OrderFood(
     @SerializedName("food_id")
-    val food_id: Int,
+    var food_id: Int,
     @SerializedName("id")
-    val id: Int,
+    var id: Int,
     @SerializedName("quantity")
-    val quantity: Int
+    var quantity: Int
 )

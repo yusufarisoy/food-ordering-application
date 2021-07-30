@@ -4,21 +4,21 @@ import com.google.gson.annotations.SerializedName
 
 data class UsersItem(
     @SerializedName("address")
-    val address: Address,
+    var address: Address,
     @SerializedName("email")
-    val email: String,
+    var email: String,
     @SerializedName("id")
-    val id: Int,
+    var id: Int,
     @SerializedName("name")
-    val name: String,
+    var name: String,
     @SerializedName("password")
-    val password: String,
+    var password: String,
     @SerializedName("phone_number")
-    val phone_number: String,
+    var phone_number: String,
     @SerializedName("photo_url")
-    val photo_url: String,
+    var photo_url: String,
     @SerializedName("surname")
-    val surname: String
+    var surname: String
 )
 
 

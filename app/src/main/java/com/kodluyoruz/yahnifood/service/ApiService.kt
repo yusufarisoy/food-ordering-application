@@ -25,14 +25,7 @@ interface ApiService {
 
 
     @POST("users")
-    fun postUser(@Field("address") address: Address,
-                 @Field("email") email: String,
-                 @Field("id") id: Int,
-                 @Field("name") name: String,
-                 @Field("password") password: String,
-                 @Field("phone_number") phone_number: String,
-                 @Field("photo_url") photo_url: String,
-                 @Field("surname") surname: String
+    fun postUser(@Body () user: UsersItem
 
     ): Call<UsersResponse>
 

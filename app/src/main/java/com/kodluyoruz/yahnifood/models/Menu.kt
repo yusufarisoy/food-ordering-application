@@ -7,13 +7,13 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Menu(
     @SerializedName("food_id")
-    val food_id: Int,
+    var food_id: Int,
     @SerializedName("ingredients")
-    val ingredients: String,
+    var ingredients: String,
     @SerializedName(" name")
-    val name: String,
+    var name: String,
     @SerializedName("photo_url:")
-    val photo_url: String,
+    var photo_url: String,
     @SerializedName("price")
-    val price: Double
+    var price: Double
 ): Parcelable
