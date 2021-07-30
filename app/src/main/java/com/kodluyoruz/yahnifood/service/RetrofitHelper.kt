@@ -45,18 +45,16 @@ class RetrofitHelper {
         .build()
 
     private var retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl(" 10.0.2.2:3000/")
+        .baseUrl("http://localhost:3000/")
         .addConverterFactory(GsonConverterFactory.create())
         .client(okhttp)
         .build()
-
-
     var service:ApiService = retrofit.create(ApiService::class.java)
 
 
 
-    fun listUsers(id: Int ,callBack: UserResponseHandler) {
-        service.getUser(id).enqueue(object : Callback<UsersResponse> {
+    fun listUsers(callBack: UserResponseHandler) {
+        service.getUser(1).enqueue(object : Callback<UsersResponse> {
             override fun onResponse(
                 call: Call<UsersResponse>,
                 response: Response<UsersResponse>
@@ -78,8 +76,8 @@ class RetrofitHelper {
         })
     }
 
-    fun listRestaurants(district: String, callBack: RestaurantResponseHandler) {
-        service.getRestaurants(district).enqueue(object : Callback<RestaurantsResponse> {
+    fun listRestaurants(callBack: RestaurantResponseHandler) {
+        service.getRestaurants("Kadikoy").enqueue(object : Callback<RestaurantsResponse> {
             override fun onResponse(
                 call: Call<RestaurantsResponse>,
                 response: Response<RestaurantsResponse>
@@ -104,8 +102,8 @@ class RetrofitHelper {
 
 
 
-    fun listOrders(id: Int, callBack: OrderResponseHandler) {
-        service.getOrders(id).enqueue(object : Callback<OrdersResponse> {
+    fun listOrders(callBack: OrderResponseHandler) {
+        service.getOrders(1).enqueue(object : Callback<OrdersResponse> {
             override fun onResponse(
                 call: Call<OrdersResponse>,
                 response: Response<OrdersResponse>

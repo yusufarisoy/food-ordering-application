@@ -6,4 +6,13 @@
     <string name="min_delivery_price_label">Min. Siparis</string>
     <string name="min_delivery_time_label">Teslim Suresi</string>
     <string name="restaurant_menu_title">Restoran Menüsü</string>
+    <string name="on_boarding_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae neque asuv scelerisque, imperdiet magna dignissim.</string>
+    <string name="on_boarding_1_title_1">ANINDA</string>
+    <string name="on_boarding_1_title_2">SİPARİŞ VER</string>
+    <string name="on_boarding_2_title_1">ÖZENLE</string>
+    <string name="on_boarding_2_title_2">HAZIRLANIR</string>
+    <string name="on_boarding_3_title_1">HIZLI</string>
+    <string name="on_boarding_3_title_2">TESLİMAT</string>
+    <string name="button_next">Devam</string>
+    <string name="button_start">Başla</string>
 </resources>
