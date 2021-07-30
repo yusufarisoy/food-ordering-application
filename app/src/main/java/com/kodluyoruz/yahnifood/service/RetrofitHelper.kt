@@ -45,7 +45,7 @@ class RetrofitHelper {
         .build()
 
     private var retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("http://localhost:3000/")
+        .baseUrl("http://10.0.2.2:3000/")
         .addConverterFactory(GsonConverterFactory.create())
         .client(okhttp)
         .build()

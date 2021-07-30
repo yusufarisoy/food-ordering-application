@@ -3,8 +3,8 @@ package com.kodluyoruz.yahnifood.models
 import com.google.gson.annotations.SerializedName
 
 data class UsersItem(
-    @SerializedName("address")
-    var address: Address,
+    @SerializedName("address_list")
+    var address: ArrayList<Address>,
     @SerializedName("email")
     var email: String,
     @SerializedName("id")

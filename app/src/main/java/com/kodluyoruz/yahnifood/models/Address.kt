@@ -6,6 +6,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Address(
+    @SerializedName("title")
+    var title: String,
     @SerializedName("add_date")
     var add_date: String,
     @SerializedName("address")
