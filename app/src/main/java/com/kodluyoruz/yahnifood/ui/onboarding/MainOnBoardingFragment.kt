@@ -1,17 +1,16 @@
 package com.kodluyoruz.yahnifood.ui.onboarding
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.kodluyoruz.yahnifood.R
 import com.kodluyoruz.yahnifood.databinding.FragmentMainOnBoardingBinding
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
@@ -91,11 +90,11 @@ class MainOnBoardingFragment : BaseFragment() {
         }
         when (position) {
             fragmentList.size - 2 -> {
-                binding.nextButton.text = "Devam"
-                binding.nextButton.setBackgroundColor(resources.getColor(R.color.teal_300))
+                binding.nextButton.text = getString(R.string.button_next)
+                binding.nextButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.teal_300))
             }; fragmentList.size - 1 -> {
-                binding.nextButton.text = "Basla"
-                binding.nextButton.setBackgroundColor(resources.getColor(R.color.light_red))
+                binding.nextButton.text = getString(R.string.button_start)
+            binding.nextButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.light_red))
             }
         }
     }
