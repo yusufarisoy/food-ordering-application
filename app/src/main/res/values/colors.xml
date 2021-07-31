@@ -12,4 +12,7 @@
     <color name="light_red">#FF6B6B</color>
     <color name="dark_blue">#3C61A2</color>
     <color name="light_blue">#6a99f4</color>
+    <color name="button_grey">#E1E1E1</color>
+    <color name="card_light_grey">#FDF9F9</color>
+    <color name="card_grey">#EEEEEE</color>
 </resources>

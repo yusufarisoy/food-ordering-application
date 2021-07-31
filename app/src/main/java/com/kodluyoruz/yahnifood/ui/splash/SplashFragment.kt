@@ -32,7 +32,7 @@ class SplashFragment : BaseFragment() {
     private fun setObservers() {
         viewModel.isFirstLaunch().observe(viewLifecycleOwner, {
             if (it != null) {
-                when(it) {
+                when(it == false) {
                     false -> {
                         findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToMainOnBoardingFragment())
                         viewModel.saveFirstLaunch()
