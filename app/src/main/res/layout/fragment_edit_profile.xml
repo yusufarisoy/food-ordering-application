@@ -29,6 +29,7 @@
         app:cardElevation="16dp">
 
         <ImageView
+            android:id="@+id/EditProfileImageView"
             android:layout_gravity="center"
             android:layout_width="120dp"
             android:layout_height="120dp"
@@ -58,6 +59,7 @@
         app:cardElevation="16dp">
 
         <EditText
+            android:inputType="text"
             android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,6 +90,7 @@
         app:cardElevation="16dp">
 
         <EditText
+            android:inputType="text"
             android:id="@+id/editTextSurname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -118,6 +121,7 @@
         app:cardElevation="16dp">
 
         <EditText
+            android:inputType="textEmailAddress"
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -148,6 +152,7 @@
         app:cardElevation="16dp">
 
         <EditText
+            android:inputType="phone"
             android:id="@+id/editTextPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

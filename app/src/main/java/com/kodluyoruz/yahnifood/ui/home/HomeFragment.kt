@@ -37,6 +37,9 @@ class HomeFragment : BaseFragment() {
                     Owner("", "", "", "", ""), "4441423", 4, "")
             ))
         }
+        binding.buttonGoToProfile.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment2())
+        }
     }
 
     private fun fetchData() {

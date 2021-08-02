@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
 
-class OrderDetailsFragment : BaseFragment() {
+class OrderHistoryFragment: BaseFragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

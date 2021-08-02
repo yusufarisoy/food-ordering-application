@@ -27,6 +27,7 @@
             app:cardElevation="16dp">
 
             <ImageView
+                android:id="@+id/profileImageView"
                 android:src="@drawable/pizza_imageholder"
                 android:layout_width="116dp"
                 android:layout_height="116dp"
@@ -35,6 +36,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
+            android:id="@+id/NameTextView"
             android:layout_marginStart="200dp"
             android:layout_marginTop="45dp"
             android:layout_width="110dp"
@@ -43,6 +45,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/EmailTextView"
             android:layout_marginStart="200dp"
             android:layout_marginTop="85dp"
             android:layout_width="110dp"
@@ -74,7 +77,23 @@
             android:id="@+id/tabLayoutProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="top" />
+            app:tabTextColor="@color/tab_text_grey"
+            app:tabIndicatorColor="@color/tab_text_grey"
+            app:tabSelectedTextColor="@color/tab_selected_grey"
+            android:layout_gravity="top">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="ORDER HISTORY"/>
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MY ADDRESSES"/>
+
+        </com.google.android.material.tabs.TabLayout>
 
     </androidx.viewpager.widget.ViewPager>
 
