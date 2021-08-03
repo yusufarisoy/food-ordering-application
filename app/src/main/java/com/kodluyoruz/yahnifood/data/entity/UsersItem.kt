@@ -1,6 +1,7 @@
-package com.kodluyoruz.yahnifood.models
+package com.kodluyoruz.yahnifood.data.entity
 
 import com.google.gson.annotations.SerializedName
+import com.kodluyoruz.yahnifood.data.entity.Address
 
 data class UsersItem(
     @SerializedName("address_list")

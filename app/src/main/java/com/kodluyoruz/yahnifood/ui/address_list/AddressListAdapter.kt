@@ -3,10 +3,9 @@ package com.kodluyoruz.yahnifood.ui.address_list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.kodluyoruz.yahnifood.IMealOnClick
 import com.kodluyoruz.yahnifood.R
 import com.kodluyoruz.yahnifood.databinding.AddressListItemBinding
-import com.kodluyoruz.yahnifood.models.Address
+import com.kodluyoruz.yahnifood.data.entity.Address
 
 class AddressListAdapter : RecyclerView.Adapter<AddressListAdapter.AddressViewHolder>() {
 

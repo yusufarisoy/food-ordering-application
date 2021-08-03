@@ -1,4 +1,4 @@
-package com.kodluyoruz.yahnifood.models
+package com.kodluyoruz.yahnifood.data.entity
 
 import com.google.gson.annotations.SerializedName
 

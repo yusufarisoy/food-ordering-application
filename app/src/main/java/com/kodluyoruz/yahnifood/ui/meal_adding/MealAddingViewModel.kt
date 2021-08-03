@@ -2,8 +2,7 @@ package com.kodluyoruz.yahnifood.ui.meal_adding
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.kodluyoruz.yahnifood.models.Menu
-import com.kodluyoruz.yahnifood.models.UsersResponse
+import com.kodluyoruz.yahnifood.data.entity.UsersResponse
 import com.kodluyoruz.yahnifood.service.ApiService
 import com.kodluyoruz.yahnifood.service.RetrofitHelper
 import com.kodluyoruz.yahnifood.service.UserResponseHandler

@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kodluyoruz.yahnifood.IMealOnClick
+import com.kodluyoruz.yahnifood.utils.IMealOnClick
 import com.kodluyoruz.yahnifood.databinding.FragmentRestaurantDetailBinding
-import com.kodluyoruz.yahnifood.models.Menu
+import com.kodluyoruz.yahnifood.data.entity.Menu
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
 
 class RestaurantDetailFragment : BaseFragment() {
@@ -39,7 +39,7 @@ class RestaurantDetailFragment : BaseFragment() {
         binding.recyclerViewFoodList.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewFoodList.adapter = adapter
 
-        adapter.addListener(object : IMealOnClick{
+        adapter.addListener(object : IMealOnClick {
             override fun onClick(menu: Menu) {
                 viewModel.onMealClicked(menu)
             }

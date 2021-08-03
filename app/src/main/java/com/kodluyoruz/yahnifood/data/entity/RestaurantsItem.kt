@@ -1,4 +1,4 @@
-package com.kodluyoruz.yahnifood.models
+package com.kodluyoruz.yahnifood.data.entity
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

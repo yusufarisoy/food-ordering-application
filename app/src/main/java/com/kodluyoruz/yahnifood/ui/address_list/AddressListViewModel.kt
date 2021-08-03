@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kodluyoruz.yahnifood.models.Address
-import com.kodluyoruz.yahnifood.models.UsersResponse
+import com.kodluyoruz.yahnifood.data.entity.Address
+import com.kodluyoruz.yahnifood.data.entity.UsersResponse
 import com.kodluyoruz.yahnifood.service.RetrofitHelper
 import com.kodluyoruz.yahnifood.service.UserResponseHandler
 

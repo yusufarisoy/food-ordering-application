@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
 
     //Safe Arguments
     id 'androidx.navigation.safeargs.kotlin'
@@ -69,4 +70,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
     //Expandable Layout
     implementation "com.github.skydoves:expandablelayout:1.0.7"
+    //dagger
+    implementation("com.google.dagger:hilt-android:$hilt_version")
+    kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
 }

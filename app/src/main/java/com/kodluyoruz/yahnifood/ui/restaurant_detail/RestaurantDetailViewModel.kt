@@ -3,8 +3,8 @@ package com.kodluyoruz.yahnifood.ui.restaurant_detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kodluyoruz.yahnifood.models.Menu
-import com.kodluyoruz.yahnifood.models.RestaurantsItem
+import com.kodluyoruz.yahnifood.data.entity.Menu
+import com.kodluyoruz.yahnifood.data.entity.RestaurantsItem
 
 class RestaurantDetailViewModel : ViewModel() {
 

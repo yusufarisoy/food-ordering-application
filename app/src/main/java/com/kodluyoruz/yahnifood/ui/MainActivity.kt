@@ -1,7 +1,8 @@
-package com.kodluyoruz.yahnifood
+package com.kodluyoruz.yahnifood.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.kodluyoruz.yahnifood.R
 import com.kodluyoruz.yahnifood.utils.SharedPreferencesUtil
 
 class MainActivity : AppCompatActivity() {

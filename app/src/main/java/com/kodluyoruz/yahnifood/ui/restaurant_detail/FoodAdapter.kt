@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.kodluyoruz.yahnifood.IMealOnClick
+import com.kodluyoruz.yahnifood.utils.IMealOnClick
 import com.kodluyoruz.yahnifood.databinding.FoodListRecyclerItemBinding
-import com.kodluyoruz.yahnifood.models.Menu
+import com.kodluyoruz.yahnifood.data.entity.Menu
 
 class FoodAdapter : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
@@ -31,7 +31,7 @@ class FoodAdapter : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
     class FoodViewHolder(private val binding: FoodListRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(food: Menu,listener: IMealOnClick?) {
+        fun bind(food: Menu, listener: IMealOnClick?) {
             Glide.with(binding.root).load(food.photo_url).into(binding.imageViewFood)
             binding.textViewFoodName.text = food.name
             binding.textViewFoodIngredients.text = food.ingredients
