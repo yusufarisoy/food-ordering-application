@@ -5,17 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kodluyoruz.yahnifood.databinding.AddressListFragmentBinding
-import com.kodluyoruz.yahnifood.service.RetrofitHelper
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
-import com.kodluyoruz.yahnifood.ui.restaurant_detail.RestaurantDetailFragmentDirections
+import com.kodluyoruz.yahnifood.utils.Resource
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddressListFragment : BaseFragment() {
     private lateinit var binding: AddressListFragmentBinding
     private val adapter = AddressListAdapter()
     private val viewModel: AddressListViewModel by viewModels()
+    private val user_id = 2
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = AddressListFragmentBinding.inflate(inflater, container, false)
@@ -26,24 +27,32 @@ class AddressListFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        initViews()
-        setData()
-    }
-
-    private fun initViews() {
-
         binding.addressListRV.layoutManager = LinearLayoutManager(context)
         binding.addressListRV.adapter = adapter
 
-    }
 
+        viewModel.getUser(user_id).observe(viewLifecycleOwner,{
 
-    private fun setData() {
-        viewModel.userAddressList.observe(viewLifecycleOwner, {
-           adapter.setDataset(it)
+            when(it.status){
+
+                Resource.Status.LOADING -> {
+
+                }
+                Resource.Status.SUCCESS -> {
+
+                    it.data?.get(0)?.address?.let { it1 -> adapter.setDataset(it1) }
+
+                }
+                Resource.Status.ERROR -> {
+
+                }
+
+            }
+
         })
 
 
     }
+
 
 }

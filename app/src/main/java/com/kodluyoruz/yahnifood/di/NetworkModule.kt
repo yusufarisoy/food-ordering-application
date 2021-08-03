@@ -2,7 +2,7 @@ package com.kodluyoruz.yahnifood.di
 
 import androidx.viewbinding.BuildConfig
 import com.google.gson.Gson
-import com.kodluyoruz.yahnifood.data.remote.NetworkApiService
+import com.kodluyoruz.yahnifood.data.remote.ApiService
 import com.kodluyoruz.yahnifood.data.remote.RemoteDataSource
 import dagger.Module
 import dagger.Provides
@@ -18,8 +18,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class NetworkModule {
 
     @Provides
-    fun provideApiService(retrofit: Retrofit): NetworkApiService {
-        return retrofit.create(NetworkApiService::class.java)
+    fun provideApiService(retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
     }
 
     @Provides
@@ -37,7 +37,7 @@ class NetworkModule {
 
     @Provides
     fun provideEndPoint(): EndPoint {
-        return EndPoint("bizim url")
+        return EndPoint("http://10.0.2.2:3000/")
     }
 
     @Provides
@@ -59,10 +59,9 @@ class NetworkModule {
 
     @Provides
     fun provideRemoteDataSource(
-        apiService: NetworkApiService,
-//        rickApiService: RickApiService
+        apiService: ApiService,
     ): RemoteDataSource {
-        return RemoteDataSource()
+        return RemoteDataSource(apiService)
     }
 
 }

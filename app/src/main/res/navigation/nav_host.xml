@@ -40,7 +40,7 @@
         tools:layout="@layout/fragment_restaurant_detail" >
         <argument
             android:name="restaurant"
-            app:argType="com.kodluyoruz.yahnifood.models.RestaurantsItem" />
+            app:argType="com.kodluyoruz.yahnifood.data.entity.RestaurantsItem" />
         <action
             android:id="@+id/action_restaurantDetailFragment_to_mealDetailFragment"
             app:destination="@id/mealDetailFragment" />
@@ -52,7 +52,7 @@
         tools:layout="@layout/fragment_meal_detail">
         <argument
             android:name="clickedFood"
-            app:argType="com.kodluyoruz.yahnifood.models.Menu" />
+            app:argType="com.kodluyoruz.yahnifood.data.entity.Menu" />
     </fragment>
     <fragment
         android:id="@+id/mainOnBoardingFragment"

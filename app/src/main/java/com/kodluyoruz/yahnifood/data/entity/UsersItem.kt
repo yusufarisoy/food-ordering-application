@@ -5,7 +5,7 @@ import com.kodluyoruz.yahnifood.data.entity.Address
 
 data class UsersItem(
     @SerializedName("address_list")
-    var address: ArrayList<Address>,
+    var address: ArrayList<Address>?,
     @SerializedName("email")
     var email: String,
     @SerializedName("id")
