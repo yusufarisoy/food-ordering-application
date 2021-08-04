@@ -1,6 +1,7 @@
 package com.kodluyoruz.yahnifood.data.remote
 
 import com.kodluyoruz.yahnifood.data.entity.OrdersItem
+import com.kodluyoruz.yahnifood.data.entity.RestaurantsItem
 import com.kodluyoruz.yahnifood.data.entity.UsersItem
 import com.kodluyoruz.yahnifood.utils.BaseDataSource
 import javax.inject.Inject
@@ -19,6 +20,8 @@ class RemoteDataSource @Inject constructor(
     suspend fun postLogin(email: String, password: String) = getResult { apiService.login(email, password) }
 
     suspend fun postOrder(order: OrdersItem) = getResult { apiService.postOrder(order) }
+
+    suspend fun addMeal(id:String,restaurantsItem: RestaurantsItem) = getResult { apiService.addMeal(id,restaurantsItem) }
 
 
 }

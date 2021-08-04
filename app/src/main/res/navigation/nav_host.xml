@@ -53,6 +53,9 @@
         <argument
             android:name="clickedFood"
             app:argType="com.kodluyoruz.yahnifood.data.entity.Menu" />
+        <action
+            android:id="@+id/action_mealDetailFragment_to_mealAddingFragment"
+            app:destination="@id/mealAddingFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainOnBoardingFragment"
@@ -95,5 +98,10 @@
             android:id="@+id/action_changePasswordFragment_to_editProfileFragment2"
             app:destination="@id/editProfileFragment2" />
     </fragment>
+    <fragment
+        android:id="@+id/mealAddingFragment"
+        android:name="com.kodluyoruz.yahnifood.ui.meal_adding.MealAddingFragment"
+        android:label="MealAddingFragment"
+        tools:layout="@layout/fragment_meal_adding"/>
 
 </navigation>

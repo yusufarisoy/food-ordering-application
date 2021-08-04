@@ -1,6 +1,7 @@
 package com.kodluyoruz.yahnifood.data
 
 import com.kodluyoruz.yahnifood.data.entity.OrdersItem
+import com.kodluyoruz.yahnifood.data.entity.RestaurantsItem
 import com.kodluyoruz.yahnifood.data.entity.UsersItem
 import com.kodluyoruz.yahnifood.data.local.LocalDataSource
 import com.kodluyoruz.yahnifood.data.remote.RemoteDataSource
@@ -35,6 +36,10 @@ class ApiRepository @Inject constructor(
 
     fun postOrder(order: OrdersItem) = performNetworkOperation {
         remoteDataSource.postOrder(order)
+    }
+
+    fun addMeal(id:String,restaurantsItem: RestaurantsItem) = performNetworkOperation {
+        remoteDataSource.addMeal(id,restaurantsItem)
     }
 
 

@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,8 @@ import androidx.annotation.Nullable
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.lifecycle.ViewModelProvider
+import com.kodluyoruz.yahnifood.data.entity.Address
+import com.kodluyoruz.yahnifood.data.entity.RestaurantsItem
 import com.kodluyoruz.yahnifood.databinding.FragmentMealAddingBinding
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
 import java.io.IOException
@@ -43,6 +46,7 @@ class MealAddingFragment: BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+
         image.setOnClickListener {
             if (checkSelfPermission(
                     requireContext(),
@@ -65,6 +69,8 @@ class MealAddingFragment: BaseFragment() {
         image = binding.mealPhoto
 
     }
+    fun submitMeal(){
+    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -72,7 +78,7 @@ class MealAddingFragment: BaseFragment() {
         grantResults: IntArray
     ) {
         if (requestCode == 1) {
-            if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (grantResults.size > 0 && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                 val intentToGallery =
                     Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                 startActivityForResult(intentToGallery, 2)
@@ -88,6 +94,8 @@ class MealAddingFragment: BaseFragment() {
     ) {
         if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
             imageData = data.data
+            Log.v("Tag",imageData.toString())
+
             try {
                 selectedImage = if (Build.VERSION.SDK_INT >= 28) {
                     val source: ImageDecoder.Source =

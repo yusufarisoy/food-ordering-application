@@ -2,10 +2,7 @@ package com.kodluyoruz.yahnifood.data.remote
 
 import com.kodluyoruz.yahnifood.data.entity.*
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -38,6 +35,9 @@ interface ApiService {
     @POST("orders")
     fun postOrder(@Body() order: OrdersItem
     ): Response <OrdersResponse>
+
+    @PUT("restaurants")
+    fun addMeal(@Path("id") id:String,@Body restaurant: RestaurantsItem) : Response<RestaurantsItem>
 
 
 

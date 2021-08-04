@@ -62,6 +62,9 @@ class MealDetailFragment : BaseFragment() {
         binding.ingredients.text = menu.ingredients
         binding.foodPrice.text = menu.price.toString()
         Glide.with(binding.root).load(menu.photo_url).into(binding.imageView)
+        binding.submit.setOnClickListener {
+            findNavController().navigate(R.id.action_mealDetailFragment_to_mealAddingFragment)
+        }
 
     }
     fun amountListener(){
