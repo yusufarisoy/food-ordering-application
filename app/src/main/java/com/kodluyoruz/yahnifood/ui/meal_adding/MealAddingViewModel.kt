@@ -3,30 +3,15 @@ package com.kodluyoruz.yahnifood.ui.meal_adding
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.kodluyoruz.yahnifood.data.entity.UsersResponse
+import com.kodluyoruz.yahnifood.data.remote.ApiService
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 
+@HiltViewModel
+class MealAddingViewModel @Inject constructor(val service : ApiService): ViewModel() {
 
-class MealAddingViewModel: ViewModel() {
-    private lateinit var service :ApiService
-    private lateinit var retfofitHelper : RetrofitHelper
 
-    init {
-        retfofitHelper = RetrofitHelper()
-        service = retfofitHelper.service
-
-    }
-    fun add(){
-        retfofitHelper.listUsers(object : UserResponseHandler{
-            override fun onResponse(response: UsersResponse) {
-                Log.v("Tag",response.get(0).email)
-            }
-
-            override fun onError() {
-
-            }
-
-        })
-    }
     /*
     fun addMeal(){
         service.getUser(1).enqueue(object : Callback<UsersResponse>{
