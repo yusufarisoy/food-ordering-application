@@ -63,7 +63,7 @@ class MealAddingFragment: BaseFragment() {
     }
     fun initViews(){
         image = binding.mealPhoto
-        viewModel.add()
+
     }
 
     override fun onRequestPermissionsResult(
