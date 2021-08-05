@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">YahniFood</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="address_label">Adres</string>
     <string name="min_delivery_price_label">Min. Siparis</string>
@@ -16,4 +15,9 @@
     <string name="button_next">Devam</string>
     <string name="button_start">Başla</string>
     <string name="imageholder_URL">https://cdn.friendlystock.com/wp-content/uploads/2019/12/4-special-pizza-cartoon-clipart.jpg</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Şifre</string>
+    <string name="button_login">Giriş Yap</string>
+    <string name="label_register">Henüz üye değil misiniz?</string>
+    <string name="button_register">Kayıt Ol</string>
 </resources>

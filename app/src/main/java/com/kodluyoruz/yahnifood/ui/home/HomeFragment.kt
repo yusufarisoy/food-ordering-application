@@ -41,11 +41,11 @@ class HomeFragment : BaseFragment() {
                     Owner("", "", "", "", ""), "4441423", 4, "")
             ))
         }
+
         binding.buttonGoToProfile.setOnClickListener {
-            if (token != -1) {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment2())
-            } else {
-                //TODO: Navigate to LoginFragment
+            when (token) {
+                -1 -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToLoginFragment())
+                else -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment2())
             }
         }
     }
