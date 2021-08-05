@@ -32,6 +32,10 @@
         <action
             android:id="@+id/action_homeFragment_to_profileFragment2"
             app:destination="@id/profileFragment2" />
+        <argument
+            android:name="token"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
     <fragment
         android:id="@+id/restaurantDetailFragment"

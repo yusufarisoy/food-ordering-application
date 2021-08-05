@@ -4,18 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kodluyoruz.yahnifood.utils.IMealOnClick
 import com.kodluyoruz.yahnifood.databinding.FragmentRestaurantDetailBinding
 import com.kodluyoruz.yahnifood.data.entity.Menu
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RestaurantDetailFragment : BaseFragment() {
 
     private lateinit var binding: FragmentRestaurantDetailBinding
-    private lateinit var viewModel: RestaurantDetailViewModel
+    private val viewModel: RestaurantDetailViewModel by viewModels()
     private val adapter = FoodAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -25,9 +27,6 @@ class RestaurantDetailFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val viewModelFactory = RestaurantDetailViewModelFactory()
-        viewModel = ViewModelProvider(this, viewModelFactory).get(RestaurantDetailViewModel::class.java)
 
         initViews()
         setObservers()
@@ -58,7 +57,9 @@ class RestaurantDetailFragment : BaseFragment() {
             val avgDelivery = it.average_delivery_time.toString() + "dk"
             binding.textViewRestaurantDeliveryTime.text = avgDelivery
 
-            viewModel.setFoodList(ArrayList(it.menu))
+            it.menu?.let { menu ->
+                viewModel.setFoodList(menu)
+            }
         })
 
         viewModel.getFoodList().observe(viewLifecycleOwner, {

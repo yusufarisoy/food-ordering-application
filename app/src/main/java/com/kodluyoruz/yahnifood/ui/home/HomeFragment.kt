@@ -11,9 +11,12 @@ import com.kodluyoruz.yahnifood.data.entity.Menu
 import com.kodluyoruz.yahnifood.data.entity.Owner
 import com.kodluyoruz.yahnifood.data.entity.RestaurantsItem
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : BaseFragment() {
 
+    private var token: Int = -1
     private lateinit var binding: FragmentHomeBinding
     private val mealList = ArrayList<Menu>()
 
@@ -39,11 +42,17 @@ class HomeFragment : BaseFragment() {
             ))
         }
         binding.buttonGoToProfile.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment2())
+            if (token != -1) {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment2())
+            } else {
+                //TODO: Navigate to LoginFragment
+            }
         }
     }
 
     private fun fetchData() {
+        token = HomeFragmentArgs.fromBundle(requireArguments()).token
+
         //TODO: GET from API
         for(i in 1..3) {
             mealList.add(Menu(i, "Lorem ipsum dolor sit amet.", "Hamburger", "https://www.burgerking.com.tr/cmsfiles/products/big-king-jr-menu-1.png?v=173", i * 10.15))

@@ -43,5 +43,22 @@ class ApiRepository @Inject constructor(
     }
 
 
+    //Local
+    fun saveString(key: String, data: String) {
+        this.localDataSource.saveString(key, data)
+    }
 
+    fun getString(key: String): String? = this.localDataSource.getString(key)
+
+    fun saveInt(key: String, data: Int) {
+        this.localDataSource.saveInt(key, data)
+    }
+
+    fun getInt(key: String): Int = this.localDataSource.getInt(key)
+
+    fun saveBoolean(key: String, data: Boolean) {
+        this.localDataSource.saveBoolean(key, data)
+    }
+
+    fun getBoolean(key: String): Boolean = this.localDataSource.getBoolean(key)
 }

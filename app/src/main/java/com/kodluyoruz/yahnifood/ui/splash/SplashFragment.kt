@@ -1,18 +1,19 @@
 package com.kodluyoruz.yahnifood.ui.splash
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.kodluyoruz.yahnifood.databinding.FragmentSplashBinding
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashFragment : BaseFragment() {
 
-    private lateinit var viewModel: SplashViewModel
+    private val viewModel: SplashViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding = FragmentSplashBinding.inflate(inflater, container, false)
@@ -22,9 +23,6 @@ class SplashFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModelFactory = SplashViewModelFactory()
-        viewModel = ViewModelProvider(this, viewModelFactory).get(SplashViewModel::class.java)
-
         setObservers()
         viewModel.handleAppLaunch()
     }
@@ -32,12 +30,12 @@ class SplashFragment : BaseFragment() {
     private fun setObservers() {
         viewModel.isFirstLaunch().observe(viewLifecycleOwner, {
             if (it != null) {
-                when(it == false) {
-                    false -> {
+                when(it) {
+                    true -> {
                         findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToMainOnBoardingFragment())
                         viewModel.saveFirstLaunch()
                     }
-                    else -> findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment())
+                    else -> findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment(viewModel.getToken()))
                 }
                 viewModel.navigationDone()
             }

@@ -14,13 +14,15 @@ import androidx.viewpager2.widget.ViewPager2
 import com.kodluyoruz.yahnifood.R
 import com.kodluyoruz.yahnifood.databinding.FragmentMainOnBoardingBinding
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainOnBoardingFragment : BaseFragment() {
 
     private lateinit var binding: FragmentMainOnBoardingBinding
     private lateinit var fragmentList: ArrayList<Fragment>
     private val layoutParamsActive = LinearLayout.LayoutParams(80, 15)
-    private val layoutParamsInactive = LinearLayout.LayoutParams(65, 15)
+    private val layoutParamsInactive = LinearLayout.LayoutParams(55, 15)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentMainOnBoardingBinding.inflate(inflater, container, false)

@@ -5,8 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kodluyoruz.yahnifood.data.entity.Menu
 import com.kodluyoruz.yahnifood.data.entity.RestaurantsItem
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class RestaurantDetailViewModel : ViewModel() {
+@HiltViewModel
+class RestaurantDetailViewModel @Inject constructor() : ViewModel() {
 
     private var restaurant: MutableLiveData<RestaurantsItem> = MutableLiveData()
     private var foodList: MutableLiveData<ArrayList<Menu>> = MutableLiveData()
@@ -20,8 +23,8 @@ class RestaurantDetailViewModel : ViewModel() {
 
     fun getFoodList(): LiveData<ArrayList<Menu>> = this.foodList
 
-    fun setFoodList(menu: ArrayList<Menu>) {
-        this.foodList.value = menu
+    fun setFoodList(menu: List<Menu>) {
+        this.foodList.value = ArrayList(menu)
     }
 
     fun getNavigateToMealDetail(): LiveData<Menu> = this.navigateToMealDetail
