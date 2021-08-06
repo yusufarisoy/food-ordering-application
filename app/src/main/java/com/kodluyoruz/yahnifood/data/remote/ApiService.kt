@@ -1,6 +1,7 @@
 package com.kodluyoruz.yahnifood.data.remote
 
 import com.kodluyoruz.yahnifood.data.entity.*
+import com.kodluyoruz.yahnifood.data.entity.dtos.UserDto
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -17,8 +18,8 @@ interface ApiService {
     ): Response<UsersResponse>
 
     @POST("users")
-    fun register(@Body() user: UsersItem
-    ): Response <UsersResponse>
+    suspend fun register(@Body() user: UserDto
+    ): Response <UsersItem>
 
     @GET("restaurants")
     fun getRestaurants(@Query("address.district") district: String

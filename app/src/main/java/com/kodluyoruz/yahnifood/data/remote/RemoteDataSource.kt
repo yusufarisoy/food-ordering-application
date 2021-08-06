@@ -3,6 +3,7 @@ package com.kodluyoruz.yahnifood.data.remote
 import com.kodluyoruz.yahnifood.data.entity.OrdersItem
 import com.kodluyoruz.yahnifood.data.entity.RestaurantsItem
 import com.kodluyoruz.yahnifood.data.entity.UsersItem
+import com.kodluyoruz.yahnifood.data.entity.dtos.UserDto
 import com.kodluyoruz.yahnifood.utils.BaseDataSource
 import javax.inject.Inject
 
@@ -15,7 +16,7 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun getUser(id: Int) = getResult { apiService.getUser(id) }
 
-    suspend fun postRegister(user: UsersItem) = getResult { apiService.register(user) }
+    suspend fun postRegister(user: UserDto) = getResult { apiService.register(user) }
 
     suspend fun postLogin(email: String, password: String) = getResult { apiService.login(email, password) }
 

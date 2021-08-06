@@ -10,6 +10,7 @@ import com.kodluyoruz.yahnifood.data.entity.Address
 import com.kodluyoruz.yahnifood.data.entity.Menu
 import com.kodluyoruz.yahnifood.data.entity.Owner
 import com.kodluyoruz.yahnifood.data.entity.RestaurantsItem
+import com.kodluyoruz.yahnifood.data.local.SharedPrefManager
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,7 +37,7 @@ class HomeFragment : BaseFragment() {
         binding.btnDetail.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToRestaurantDetailFragment(
                 RestaurantsItem(
-                    Address("", "Sureyyaplaji", "Istanbul", "Maltepe", "",""), 45, 1, "",
+                    Address("", "Sureyyaplaji", "", "Istanbul", "Maltepe",""), 45, 1, "",
                     mealList, 25, "Burger King",
                     Owner("", "", "", "", ""), "4441423", 4, "")
             ))

@@ -20,4 +20,8 @@
     <string name="button_login">Giriş Yap</string>
     <string name="label_register">Henüz üye değil misiniz?</string>
     <string name="button_register">Kayıt Ol</string>
+    <string name="hint_name">Ad</string>
+    <string name="hint_surname">Soyad</string>
+    <string name="hint_phone_number">Telefon Numarası</string>
+    <string name="hint_register">Kaydol</string>
 </resources>

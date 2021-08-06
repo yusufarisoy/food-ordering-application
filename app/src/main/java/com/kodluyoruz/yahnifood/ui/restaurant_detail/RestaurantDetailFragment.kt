@@ -43,6 +43,11 @@ class RestaurantDetailFragment : BaseFragment() {
                 viewModel.onMealClicked(menu)
             }
         })
+
+        //TODO: Move it to ProfileFragment
+        binding.btnLogout.setOnClickListener {
+            viewModel.logout()
+        }
     }
 
     private fun setObservers() {

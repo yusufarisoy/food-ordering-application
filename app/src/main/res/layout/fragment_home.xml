@@ -10,7 +10,9 @@
     <!-- TODO: Update blank fragment layout -->
     <Button
         android:id="@+id/btnDetail"
-        android:text="Detay"
+        android:text="Restoran Click"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/teal_700"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"

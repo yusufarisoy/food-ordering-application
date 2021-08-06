@@ -56,6 +56,17 @@
         app:layout_constraintTop_toBottomOf="@id/imageViewBackground"
         app:drawableEndCompat="@drawable/ic_star" />
 
+    <Button
+        android:id="@+id/btnLogout"
+        android:text="Logout"
+        android:backgroundTint="@color/dark_red"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_4"
+        app:layout_constraintTop_toBottomOf="@id/imageViewBackground"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/textViewRestaurantAddressLabel"
         android:text="@string/address_label"
