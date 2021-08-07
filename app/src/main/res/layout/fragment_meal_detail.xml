@@ -87,6 +87,17 @@
                 app:layout_constraintTop_toTopOf="@+id/increase"
                 android:text="39,90TL" />
 
+            <ImageView
+                android:id="@+id/shareMeal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:src="@drawable/share"
+                app:layout_constraintBottom_toTopOf="@+id/foodPrice"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ingredients"
+                app:layout_constraintVertical_bias="0.22000003" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -129,6 +140,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/expandableCard"
         app:layout_constraintVertical_bias="0.25" />
+
+    <ImageView
+        android:id="@+id/testImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 
 
 

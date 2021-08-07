@@ -6,7 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kodluyoruz.yahnifood.data.ApiRepository
+import com.kodluyoruz.yahnifood.data.entity.UsersResponse
 import com.kodluyoruz.yahnifood.data.local.SharedPrefManager
+import com.kodluyoruz.yahnifood.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -32,4 +34,5 @@ class SplashViewModel @Inject constructor(private val apiRepository: ApiReposito
     fun navigationDone() {
         this.firstLaunch.value = null
     }
+
 }

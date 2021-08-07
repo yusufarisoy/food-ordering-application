@@ -1,6 +1,13 @@
 package com.kodluyoruz.yahnifood.ui.meal_detail
 
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.os.StrictMode
+import android.os.StrictMode.VmPolicy
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,17 +21,24 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.kodluyoruz.yahnifood.R
 import com.kodluyoruz.yahnifood.data.entity.Menu
 import com.kodluyoruz.yahnifood.databinding.FragmentMealDetailBinding
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
 import com.skydoves.expandablelayout.ExpandableLayout
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+
 
 class MealDetailFragment : BaseFragment() {
     private lateinit var binding: FragmentMealDetailBinding
     private lateinit var expandableLayout: ExpandableLayout
     private lateinit var listView :ListView
     private lateinit var menu : Menu
+    private lateinit var bitmap :Bitmap
     private val args: MealDetailFragmentArgs by navArgs()
     private val viewModel : MealDetailViewModel by viewModels()
     override fun onCreateView(
@@ -46,6 +60,12 @@ class MealDetailFragment : BaseFragment() {
             binding.foodPrice.text = "${it * menu.price}"
             binding.textView3.text = "${it} Adet"
         })
+        binding.shareMeal.setOnClickListener {
+            share()
+            Log.v("Tag","clicked")
+        }
+        val builder = VmPolicy.Builder()
+        StrictMode.setVmPolicy(builder.build())
     }
     fun initViews(){
         menu = args.clickedFood
@@ -96,4 +116,47 @@ class MealDetailFragment : BaseFragment() {
                 checkedTextView.isChecked = !checkedTextView.isChecked
             }
     }
+    fun share(){
+        Glide.with(this)
+            .asBitmap()
+            .load(menu.photo_url)
+            .into(object : CustomTarget<Bitmap>(){
+                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                    val shareIntent: Intent = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        type = "image/*"
+                        putExtra(Intent.EXTRA_STREAM,getLocalBitmapUri(resource))
+                        putExtra(Intent.EXTRA_TEXT,"${menu.name} \nPrice:${menu.price}TL")
+                        //putExtra(Intent.EXTRA_TEXT, "${menu.name} \n ${menu.price} \n ${menu.photo_url}")
+                    }
+                    startActivity(Intent.createChooser(shareIntent, "Send to"))
+                }
+                override fun onLoadCleared(placeholder: Drawable?) {
+                    // this is called when imageView is cleared on lifecycle call or for
+                    // some other reason.
+                    // if you are referencing the bitmap somewhere else too other than this imageView
+                    // clear it here as you can no longer have the bitmap
+                }
+            })
+
+
+    }
+
+    fun getLocalBitmapUri(bmp: Bitmap): Uri? {
+        var bmpUri: Uri? = null
+        try {
+            val file: File = File(
+                requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES),
+                "share_image_" + System.currentTimeMillis() + ".png"
+            )
+            val out = FileOutputStream(file)
+            bmp.compress(Bitmap.CompressFormat.PNG, 90, out)
+            out.close()
+            bmpUri = Uri.fromFile(file)
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return bmpUri
+    }
 }
+
