@@ -18,20 +18,25 @@ import android.widget.ImageView
 import androidx.annotation.Nullable
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.kodluyoruz.yahnifood.data.entity.Address
+import com.kodluyoruz.yahnifood.data.entity.Menu
+import com.kodluyoruz.yahnifood.data.entity.Owner
 import com.kodluyoruz.yahnifood.data.entity.RestaurantsItem
 import com.kodluyoruz.yahnifood.databinding.FragmentMealAddingBinding
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
+import com.kodluyoruz.yahnifood.utils.Resource
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
 
 
+@AndroidEntryPoint
 class MealAddingFragment: BaseFragment() {
     private lateinit var image : ImageView
     private lateinit var binding : FragmentMealAddingBinding
-    private val viewModel: MealAddingViewModel by lazy {
-        ViewModelProvider(this).get(MealAddingViewModel::class.java)
-    }
+    private val viewModel: MealAddingViewModel by viewModels()
     var selectedImage: Bitmap? = null
     var imageData: Uri? = null
     override fun onCreateView(
@@ -64,6 +69,23 @@ class MealAddingFragment: BaseFragment() {
                 startActivityForResult(intentToGallery, 2)
             }
         }
+        val menu = Menu(2,"asdasd","pizza","asdsad.png",35.0)
+        val list = ArrayList<Menu>()
+        list.add(menu)
+        val address = Address("","","","","","")
+        val owner = Owner("","","","","")
+        val restaurantsItem = RestaurantsItem(address,0,1,"",list,0,"asd",owner,"",0,"")
+        viewModel.addMeal("1",restaurantsItem).observe(viewLifecycleOwner, object:Observer<Resource<RestaurantsItem>>{
+            override fun onChanged(t: Resource<RestaurantsItem>?) {
+                when(t?.status){
+                    Resource.Status.ERROR -> Log.v("Tag",t.message!!)
+                    Resource.Status.SUCCESS ->{
+                        Log.v("Tag",t.data!!.name)
+                    }
+                }
+            }
+
+        })
     }
     fun initViews(){
         image = binding.mealPhoto
@@ -110,6 +132,10 @@ class MealAddingFragment: BaseFragment() {
             }
         }
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    fun addMeal(){
+
     }
 
 

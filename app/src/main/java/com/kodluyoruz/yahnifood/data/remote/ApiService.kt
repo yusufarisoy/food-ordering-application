@@ -37,8 +37,8 @@ interface ApiService {
     fun postOrder(@Body() order: OrdersItem
     ): Response <OrdersResponse>
 
-    @PUT("restaurants")
-    fun addMeal(@Path("id") id:String,@Body restaurant: RestaurantsItem) : Response<RestaurantsItem>
+    @PUT("restaurants/{id}")
+    suspend fun addMeal(@Path("id") id:String, @Body restaurant: RestaurantsItem) : Response<RestaurantsItem>
 
 
 
