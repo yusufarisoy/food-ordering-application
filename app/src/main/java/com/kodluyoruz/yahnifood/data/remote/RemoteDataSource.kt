@@ -24,5 +24,11 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun addMeal(id:String,restaurantsItem: RestaurantsItem) = getResult { apiService.addMeal(id,restaurantsItem) }
 
+    // todo: checkpoint
+    suspend fun postRestaurant(restaurant:RestaurantsItem) =  getResult { apiService.postRestaurant(restaurant) }
+
+    suspend fun getAllRestaurants() = getResult { apiService.getAllRestaurants() }
+
+
 
 }

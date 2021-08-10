@@ -20,4 +20,7 @@
     <color name="tab_selected_grey">#737373</color>
     <color name="tab_background_grey">#C4C4C4</color>
     <color name="button_purple">#7C5474</color>
+    <color name="color_old_lavender">#725F6E</color>
+    <color name="color_gothic">#7597A8</color>
+    <color name="color_falcon">#7C5474</color>
 </resources>

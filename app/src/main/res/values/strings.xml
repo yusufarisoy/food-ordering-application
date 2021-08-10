@@ -24,4 +24,14 @@
     <string name="hint_surname">Soyad</string>
     <string name="hint_phone_number">Telefon Numarası</string>
     <string name="hint_register">Kaydol</string>
+    <string name="add_your_restaurant_str">Restaurantını Ekle</string>
+    <string name="general_info_text_str">Genel Bilgiler</string>
+    <string name="restaurant_name_str">Restaurant Adı</string>
+    <string name="phone_number_str">Telefon Numarası</string>
+    <string name="address_info_text_str">Adres Bilgileri</string>
+    <string name="city_str">Şehir</string>
+    <string name="county_str">İlçe</string>
+    <string name="address_detail_str">Açık Adres</string>
+    <string name="has_restaurant_str">Restaurant Sahibi Misiniz?&#160;&#160;</string>
+    <string name="save_restaurant">Restaurant Kaydet</string>
 </resources>

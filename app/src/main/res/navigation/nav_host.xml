@@ -39,8 +39,19 @@
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_addRestaurantFragment"
+            app:destination="@id/addRestaurantFragment" />
+
     </fragment>
     <fragment
+        android:id="@+id/addRestaurantFragment"
+        android:name="com.kodluyoruz.yahnifood.ui.add_restaurant.AddRestaurantFragment"
+        android:label="fragment_add_restaurant"
+        tools:layout="@layout/add_restaurant_fragment">
+
+    </fragment>    <fragment
         android:id="@+id/restaurantDetailFragment"
         android:name="com.kodluyoruz.yahnifood.ui.restaurant_detail.RestaurantDetailFragment"
         android:label="fragment_restaurant_detail"

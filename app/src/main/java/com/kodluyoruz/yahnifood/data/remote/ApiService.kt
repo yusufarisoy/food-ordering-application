@@ -41,6 +41,9 @@ interface ApiService {
     suspend fun addMeal(@Path("id") id:String, @Body restaurant: RestaurantsItem) : Response<RestaurantsItem>
 
 
+    @GET("restaurants")
+    suspend fun getAllRestaurants():Response<RestaurantsResponse>
+
 
 
 

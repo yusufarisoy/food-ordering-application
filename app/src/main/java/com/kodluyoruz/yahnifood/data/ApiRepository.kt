@@ -42,6 +42,15 @@ class ApiRepository @Inject constructor(
     fun addMeal(id:String,restaurantsItem: RestaurantsItem) = performNetworkOperation {
         remoteDataSource.addMeal(id,restaurantsItem)
     }
+    // todo: checkpoint
+    fun postRestaurant(restaurant: RestaurantsItem) = performNetworkOperation {
+        remoteDataSource.postRestaurant(restaurant)
+    }
+    //todo: chackpoint
+    fun getAllRestaurants() = performNetworkOperation {
+        remoteDataSource.getAllRestaurants()
+    }
+
 
 
     //Local

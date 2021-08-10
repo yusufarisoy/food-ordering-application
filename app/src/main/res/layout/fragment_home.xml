@@ -8,7 +8,7 @@
     tools:context=".ui.home.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <Button
+    <!--<Button
         android:id="@+id/btnDetail"
         android:text="Restoran Click"
         android:textAllCaps="false"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"/>-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonGoToProfile"
@@ -32,6 +32,78 @@
         app:backgroundTint="@color/card_grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:paddingStart="20dp"
+            android:textSize="24sp"
+            android:text="Hoşgeldiniz"
+            android:textStyle="bold"
+            android:id="@+id/welcome_text"
+            android:layout_width="0dp"
+            android:textColor="@color/color_old_lavender"
+            app:layout_constraintVertical_bias="0.03"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonGoToProfile"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    <TextView
+
+            android:paddingStart="20dp"
+            android:textSize="15sp"
+            android:text="Bekleniyor..."
+            android:id="@+id/result_text_view"
+            android:layout_width="0dp"
+            android:textColor="@color/tab_text_grey"
+            app:layout_constraintVertical_bias="0.01"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonGoToProfile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_text"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="20dp"
+            android:id="@+id/restaurantRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/addRestaurantLayout"
+            app:layout_constraintTop_toBottomOf="@+id/result_text_view"/>
+
+
+    <LinearLayout
+            app:layout_constraintVertical_bias="0.95"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/addRestaurantLayout">
+
+
+        <TextView
+                android:text="@string/has_restaurant_str"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/save_restaurant_button"
+                android:textColor="@color/color_gothic"
+                android:textStyle="bold"
+                android:text="@string/save_restaurant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

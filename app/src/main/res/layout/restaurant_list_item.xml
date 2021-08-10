@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingTop="5dp"
+        android:background="@drawable/layout_ripple"
+        android:clickable="true"
+        android:gravity="center"
+        android:layout_marginVertical="3dp"
+        android:orientation="horizontal"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+            android:layout_marginBottom="5dp"
+            app:layout_constraintHorizontal_bias="0"
+            android:layout_weight="1"
+            app:cardCornerRadius="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/cardView">
+        <ImageView
+                android:id="@+id/restaurant_imageview"
+                android:src="@drawable/sample_restaurant"
+                android:scaleType="centerCrop"
+                android:layout_width="100dp"
+                android:layout_height="65dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+            android:layout_marginBottom="5dp"
+            android:paddingHorizontal="10dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:id="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+                android:gravity="center_vertical|start"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <androidx.cardview.widget.CardView
+                    android:id="@+id/restaurant_point_card"
+                    app:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="#81BF4A"
+                    android:layout_width="50dp"
+                    android:layout_height="27dp">
+                <TextView
+                        android:id="@+id/restaurant_point_textview"
+                        android:text="4,2"
+                        android:textColor="@color/white"
+                        android:gravity="center_vertical"
+                        android:textSize="15sp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </androidx.cardview.widget.CardView>
+            <TextView
+                    android:id="@+id/restaurant_name_edittext"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="10dp"
+                    android:text="Demoglu Restaurant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:gravity="center_vertical|start|bottom"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:src="@drawable/ic_min_price"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="5dp"/>
+                <TextView
+                        android:text="10TL"
+                        android:textSize="13sp"
+                        android:id="@+id/restaurant_min_price_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:layout_marginStart="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:src="@drawable/ic_time"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="5dp"/>
+                <TextView
+                        android:text="35-45 min."
+                        android:textSize="13sp"
+                        android:id="@+id/restaurant_remain_time_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+            android:layout_marginTop="10dp"
+            app:layout_constraintVertical_bias="1"
+            android:orientation="horizontal"
+            android:background="@color/tab_text_grey"
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="35dp"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.add_restaurant.AddRestaurantFragment"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+            android:src="@drawable/ic_add_restaurant_vector"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/imageView"/>
+
+    <TextView
+            app:layout_constraintVertical_bias="0"
+            android:text="@string/add_your_restaurant_str"
+            android:textColor="@color/color_old_lavender"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            android:id="@+id/header_text"/>
+
+    <LinearLayout
+            android:gravity="center"
+            android:id="@+id/general_info_layout"
+            android:orientation="vertical"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_text">
+
+        <TextView
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/general_info_text_str"
+                android:textColor="@color/tab_text_grey"
+                android:id="@+id/general_info_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"/>
+
+
+        <EditText
+                android:layout_marginTop="8dp"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="13dp"
+                android:background="@drawable/textfield_rect"
+                android:hint="@string/restaurant_name_str"
+                android:id="@+id/restaurant_name_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <EditText
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="13dp"
+                android:inputType="phone"
+                android:background="@drawable/textfield_rect"
+                android:hint="@string/phone_number_str"
+                android:id="@+id/phone_number_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:id="@+id/address_info_layout"
+            android:orientation="vertical"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/general_info_layout">
+
+        <TextView
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/address_info_text_str"
+                android:textColor="@color/tab_text_grey"
+                android:id="@+id/address_info_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"/>
+
+        <LinearLayout
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+            <EditText
+                    android:id="@+id/restaurant_city_edittext"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="13dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textfield_rect"
+                    android:hint="@string/city_str"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"/>
+            <EditText
+                    android:id="@+id/restaurant_county_edittext"
+                    android:layout_marginStart="10dp"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="13dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textfield_rect"
+                    android:hint="@string/county_str"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+        <EditText
+                android:id="@+id/restaurant_addressdt_edittext"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="13dp"
+                android:background="@drawable/textfield_rect"
+                android:hint="@string/address_detail_str"
+                android:lines="3"
+                android:inputType="textMultiLine"
+                android:gravity="top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/address_info_layout">
+
+        <com.google.android.material.button.MaterialButton
+                android:layout_weight="1"
+                android:id="@+id/clear_button"
+                android:text="Temizle"
+                android:layout_width="match_parent"
+                android:textAllCaps="false"
+                app:cornerRadius="7dp"
+                android:backgroundTint="@color/color_gothic"
+                android:layout_height="55dp"
+                android:layout_marginEnd="8dp"/>
+
+        <com.google.android.material.button.MaterialButton
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="Kaydet"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/color_falcon"
+                app:cornerRadius="7dp"
+                android:id="@+id/save_restaurant_button"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"/>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
