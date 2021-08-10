@@ -88,7 +88,7 @@ class MealDetailFragment : BaseFragment() {
                 orderList.add(orderFood)
                 val order = OrdersItem("",2,"",orderList,1,3,viewModel.getToken())
                 viewModel.postOrder(order).observe(viewLifecycleOwner,{
-                    //OrdersResponse not implemented
+                    //OrdersResponse is null
                 })
             }
             else{
