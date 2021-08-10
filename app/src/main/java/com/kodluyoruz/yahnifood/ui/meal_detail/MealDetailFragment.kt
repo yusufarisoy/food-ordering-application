@@ -42,6 +42,7 @@ class MealDetailFragment : BaseFragment() {
     private lateinit var menu : Menu
     private val args: MealDetailFragmentArgs by navArgs()
     private val viewModel : MealDetailViewModel by viewModels()
+    private lateinit var orderFood : OrderFood
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -59,10 +60,8 @@ class MealDetailFragment : BaseFragment() {
         viewModel.amount.observe(viewLifecycleOwner, Observer {
             binding.foodPrice.text = "${it * menu.price} TL"
             binding.textView3.text = "${it} Adet"
+            orderFood = OrderFood(menu.food_id,2,it)
         })
-        binding.shareMeal.setOnClickListener {
-            share()
-        }
         val builder = VmPolicy.Builder()
         StrictMode.setVmPolicy(builder.build())
     }
@@ -77,6 +76,9 @@ class MealDetailFragment : BaseFragment() {
                 expandableLayout.expand()
             }
         }
+        binding.shareMeal.setOnClickListener {
+            share()
+        }
         binding.name.text = menu.name
         binding.ingredients.text = menu.ingredients
         binding.foodPrice.text = menu.price.toString()
@@ -84,11 +86,10 @@ class MealDetailFragment : BaseFragment() {
         binding.submit.setOnClickListener {
             if(viewModel.getToken() != -1) {
                 val orderList = ArrayList<OrderFood>()
-                val orderFood = OrderFood(menu.food_id,2,1)
                 orderList.add(orderFood)
-                val order = OrdersItem("",2,"",orderList,1,3,viewModel.getToken())
+                val order = OrdersItem("",2,binding.mealOrderNote.editText?.text.toString(),orderList,1,3,viewModel.getToken())
                 viewModel.postOrder(order).observe(viewLifecycleOwner,{
-                    //OrdersResponse is null
+                    Toast.makeText(requireContext(),"You ordered succesfully",Toast.LENGTH_SHORT)
                 })
             }
             else{
@@ -132,7 +133,6 @@ class MealDetailFragment : BaseFragment() {
                         type = "image/*"
                         putExtra(Intent.EXTRA_STREAM,getLocalBitmapUri(resource))
                         putExtra(Intent.EXTRA_TEXT,"${menu.name} \nPrice:${menu.price}TL")
-                        //putExtra(Intent.EXTRA_TEXT, "${menu.name} \n ${menu.price} \n ${menu.photo_url}")
                     }
                     startActivity(Intent.createChooser(shareIntent, "Send to"))
                 }

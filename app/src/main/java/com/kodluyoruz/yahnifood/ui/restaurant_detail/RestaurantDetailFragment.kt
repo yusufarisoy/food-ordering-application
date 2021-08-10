@@ -11,6 +11,7 @@ import com.kodluyoruz.yahnifood.R
 import com.kodluyoruz.yahnifood.utils.IMealOnClick
 import com.kodluyoruz.yahnifood.databinding.FragmentRestaurantDetailBinding
 import com.kodluyoruz.yahnifood.data.entity.Menu
+import com.kodluyoruz.yahnifood.data.entity.RestaurantsItem
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +21,7 @@ class RestaurantDetailFragment : BaseFragment() {
     private lateinit var binding: FragmentRestaurantDetailBinding
     private val viewModel: RestaurantDetailViewModel by viewModels()
     private val adapter = FoodAdapter()
+    private lateinit var restaurantClicked : RestaurantsItem
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentRestaurantDetailBinding.inflate(inflater, container, false)
@@ -34,7 +36,8 @@ class RestaurantDetailFragment : BaseFragment() {
     }
 
     private fun initViews() {
-        viewModel.setRestaurant(RestaurantDetailFragmentArgs.fromBundle(requireArguments()).restaurant)
+        restaurantClicked = RestaurantDetailFragmentArgs.fromBundle(requireArguments()).restaurant
+        viewModel.setRestaurant(restaurantClicked)
 
         binding.recyclerViewFoodList.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewFoodList.adapter = adapter
@@ -50,7 +53,7 @@ class RestaurantDetailFragment : BaseFragment() {
             viewModel.logout()
         }
         binding.addMeal.setOnClickListener {
-            findNavController().navigate(R.id.action_restaurantDetailFragment_to_mealAddingFragment)
+            findNavController().navigate(RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToMealAddingFragment(restaurantClicked))
         }
     }
 

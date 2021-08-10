@@ -120,7 +120,11 @@
         android:id="@+id/mealAddingFragment"
         android:name="com.kodluyoruz.yahnifood.ui.meal_adding.MealAddingFragment"
         android:label="MealAddingFragment"
-        tools:layout="@layout/fragment_meal_adding"/>
+        tools:layout="@layout/fragment_meal_adding">
+        <argument
+            android:name="restaurant"
+            app:argType="com.kodluyoruz.yahnifood.data.entity.RestaurantsItem" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.kodluyoruz.yahnifood.ui.login.LoginFragment"
