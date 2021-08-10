@@ -20,6 +20,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/orderID_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -36,6 +37,7 @@
         android:background="@drawable/line"/>
 
     <TextView
+        android:id="@+id/orderDate_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -68,6 +70,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/orderAddress_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="170dp"
@@ -100,6 +103,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/orderRate_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -123,6 +127,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/orderReview_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"

@@ -58,6 +58,7 @@
 
     <Button
         android:id="@+id/btnLogout"
+        android:visibility="gone"
         android:text="Logout"
         android:backgroundTint="@color/dark_red"
         android:textAllCaps="false"

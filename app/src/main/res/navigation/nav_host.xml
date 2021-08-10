@@ -94,6 +94,12 @@
         <action
             android:id="@+id/action_profileFragment2_to_editProfileFragment2"
             app:destination="@id/editProfileFragment2" />
+        <action
+            android:id="@+id/action_profileFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment" />
+        <action
+            android:id="@+id/action_profileFragment2_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment2"
@@ -144,6 +150,24 @@
         android:name="com.kodluyoruz.yahnifood.ui.register.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
+    </fragment>
+    <fragment
+        android:id="@+id/addressListFragment"
+        android:name="com.kodluyoruz.yahnifood.ui.address_list.AddressListFragment"
+        android:label="address_list_fragment"
+        tools:layout="@layout/address_list_fragment" >
+        <action
+            android:id="@+id/action_addressListFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAddressFragment"
+        android:name="com.kodluyoruz.yahnifood.ui.add_address.AddAddressFragment"
+        android:label="fragment_add_address"
+        tools:layout="@layout/fragment_add_address" >
+        <action
+            android:id="@+id/action_addAddressFragment_to_profileFragment2"
+            app:destination="@id/profileFragment2" />
     </fragment>
 
 </navigation>

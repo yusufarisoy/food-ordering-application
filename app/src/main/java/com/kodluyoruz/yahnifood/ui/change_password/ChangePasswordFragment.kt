@@ -4,14 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.kodluyoruz.yahnifood.databinding.FragmentChangePasswordBinding
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ChangePasswordFragment : BaseFragment() {
 
     private lateinit var binding: FragmentChangePasswordBinding
+    private val viewModel: ChangePasswordViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,7 +32,7 @@ class ChangePasswordFragment : BaseFragment() {
     }
     private fun initViews() {
 
-        binding.buttonChangePassword.setOnClickListener {
+        binding.buttonUpdatePassword.setOnClickListener {
             findNavController().navigate(ChangePasswordFragmentDirections.actionChangePasswordFragmentToEditProfileFragment2())
         }
     }

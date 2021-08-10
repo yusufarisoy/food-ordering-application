@@ -13,10 +13,9 @@ class ProfileViewPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter
 
     override fun createFragment(position: Int): Fragment {
         return when(position){
-            0 -> OrderHistoryFragment()
-            1 -> AddressListFragment()
+            0 -> AddressListFragment()
+            1 -> OrderHistoryFragment()
             else -> AddressListFragment()
         }
     }
-
 }

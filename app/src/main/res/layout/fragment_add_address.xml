@@ -1,100 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.add_address.AddAddressFragment">
 
-    <TextView
-        android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutAddressTitle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="115dp"
-        android:layout_marginEnd="16dp"
-        android:text="Title:"
-        android:textStyle="bold" />
+        android:layout_margin="16dp"
+        android:hint="Address Title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.135">
 
-    <androidx.cardview.widget.CardView
-        android:backgroundTint="@color/card_light_grey"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="145dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="16dp">
-
-        <EditText
-            android:id="@+id/editTextTitle"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextAddressTitle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"/>
+            android:layout_height="60dp"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutAddressDistrict"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="16dp"
-        android:text="City:"
-        android:textStyle="bold" />
+        android:layout_margin="16dp"
+        android:hint="City"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAddressTitle">
 
-    <androidx.cardview.widget.CardView
-        android:backgroundTint="@color/card_light_grey"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="240dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="16dp">
-
-        <EditText
-            android:id="@+id/editTextCity"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextAddressDistrict"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"/>
+            android:layout_height="60dp"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutAddressDetail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="310dp"
-        android:layout_marginEnd="16dp"
-        android:text="Address Detail:"
-        android:textStyle="bold" />
+        android:layout_margin="16dp"
+        android:hint="Address Detail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAddressDistrict">
 
-    <androidx.cardview.widget.CardView
-        android:backgroundTint="@color/card_light_grey"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="340dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="16dp">
-
-        <EditText
-            android:id="@+id/editTextAddressDetail"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextAddressDetail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"/>
-
-    </androidx.cardview.widget.CardView>
+            android:layout_height="140dp"
+            android:lines="5"
+            android:gravity="top"
+            android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/buttonAddAddress"
@@ -102,11 +70,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="8dp"
+        android:layout_margin="16dp"
         android:backgroundTint="@color/button_grey"
+        android:textAllCaps="false"
         android:text="Add Address"
         android:textColor="@color/black"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="578dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAddressDetail"
+        app:layout_constraintVertical_bias="0.275" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
