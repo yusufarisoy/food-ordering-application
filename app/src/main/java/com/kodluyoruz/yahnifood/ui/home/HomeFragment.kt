@@ -92,7 +92,9 @@ class HomeFragment : BaseFragment() {
 
     private fun fetchData() {
         token = HomeFragmentArgs.fromBundle(requireArguments()).token
-
+        if(token==-1){
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToLoginFragment())
+        }
         //TODO: GET from API
         for(i in 1..3) {
             mealList.add(Menu(i, "Lorem ipsum dolor sit amet.", "Hamburger", "https://www.burgerking.com.tr/cmsfiles/products/big-king-jr-menu-1.png?v=173", i * 10.15))
