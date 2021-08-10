@@ -62,7 +62,10 @@
         <action
             android:id="@+id/action_restaurantDetailFragment_to_mealDetailFragment"
             app:destination="@id/mealDetailFragment" />
-    </fragment>
+    <action
+        android:id="@+id/action_restaurantDetailFragment_to_mealAddingFragment"
+        app:destination="@id/mealAddingFragment" />
+</fragment>
     <fragment
         android:id="@+id/mealDetailFragment"
         android:name="com.kodluyoruz.yahnifood.ui.meal_detail.MealDetailFragment"
@@ -71,9 +74,6 @@
         <argument
             android:name="clickedFood"
             app:argType="com.kodluyoruz.yahnifood.data.entity.Menu" />
-        <action
-            android:id="@+id/action_mealDetailFragment_to_mealAddingFragment"
-            app:destination="@id/mealAddingFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainOnBoardingFragment"

@@ -94,7 +94,7 @@ class MealDetailFragment : BaseFragment() {
             else{
                 Toast.makeText(requireContext(),"Please login to order",Toast.LENGTH_SHORT).show()
             }
-            findNavController().navigate(R.id.action_mealDetailFragment_to_mealAddingFragment)
+
         }
     }
     fun amountListener(){

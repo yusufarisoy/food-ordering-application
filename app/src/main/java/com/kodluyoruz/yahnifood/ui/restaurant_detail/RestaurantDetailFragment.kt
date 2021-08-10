@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kodluyoruz.yahnifood.R
 import com.kodluyoruz.yahnifood.utils.IMealOnClick
 import com.kodluyoruz.yahnifood.databinding.FragmentRestaurantDetailBinding
 import com.kodluyoruz.yahnifood.data.entity.Menu
@@ -47,6 +48,9 @@ class RestaurantDetailFragment : BaseFragment() {
         //TODO: Move it to ProfileFragment
         binding.btnLogout.setOnClickListener {
             viewModel.logout()
+        }
+        binding.addMeal.setOnClickListener {
+            findNavController().navigate(R.id.action_restaurantDetailFragment_to_mealAddingFragment)
         }
     }
 
