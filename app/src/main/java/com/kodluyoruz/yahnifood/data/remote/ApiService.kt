@@ -34,18 +34,13 @@ interface ApiService {
     ): Response <RestaurantsResponse>
 
     @POST("orders")
-    fun postOrder(@Body() order: OrdersItem
-    ): Response <OrdersResponse>
+    suspend fun postOrder(@Body() order: OrdersItem): Response<OrdersResponse>
 
     @PUT("restaurants/{id}")
     suspend fun addMeal(@Path("id") id:String, @Body restaurant: RestaurantsItem) : Response<RestaurantsItem>
 
-
     @GET("restaurants")
     suspend fun getAllRestaurants():Response<RestaurantsResponse>
-
-
-
 
 }
 

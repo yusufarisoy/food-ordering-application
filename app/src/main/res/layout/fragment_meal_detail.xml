@@ -34,7 +34,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="@+id/imageView"
-                android:text="Büyük Boy Pizza Fırsatı" />
+                />
 
             <TextView
                 android:id="@+id/ingredients"
@@ -43,7 +43,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/name"
                 app:layout_constraintTop_toBottomOf="@id/name"
-                android:text="Seçeceğiniz Büyük Boy Pizza(Gurme pizzalar için 9.9 TL fark uygulanmaktadır)" />
+                 />
 
             <ImageView
                 android:id="@+id/decrease"
@@ -85,7 +85,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/increase"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/increase"
-                android:text="39,90TL" />
+                 />
 
             <ImageView
                 android:id="@+id/shareMeal"

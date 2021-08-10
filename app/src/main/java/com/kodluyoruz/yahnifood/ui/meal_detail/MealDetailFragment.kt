@@ -12,10 +12,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.CheckedTextView
-import android.widget.ListView
+import android.widget.*
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -25,20 +22,24 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.kodluyoruz.yahnifood.R
 import com.kodluyoruz.yahnifood.data.entity.Menu
+import com.kodluyoruz.yahnifood.data.entity.OrderFood
+import com.kodluyoruz.yahnifood.data.entity.OrdersItem
 import com.kodluyoruz.yahnifood.databinding.FragmentMealDetailBinding
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
+import com.kodluyoruz.yahnifood.utils.Resource
 import com.skydoves.expandablelayout.ExpandableLayout
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 
-
+@AndroidEntryPoint
 class MealDetailFragment : BaseFragment() {
     private lateinit var binding: FragmentMealDetailBinding
     private lateinit var expandableLayout: ExpandableLayout
     private lateinit var listView :ListView
     private lateinit var menu : Menu
-    private lateinit var bitmap :Bitmap
     private val args: MealDetailFragmentArgs by navArgs()
     private val viewModel : MealDetailViewModel by viewModels()
     override fun onCreateView(
@@ -56,13 +57,11 @@ class MealDetailFragment : BaseFragment() {
         initListView()
         amountListener()
         viewModel.amount.observe(viewLifecycleOwner, Observer {
-            Log.v("Tag",it.toString())
-            binding.foodPrice.text = "${it * menu.price}"
+            binding.foodPrice.text = "${it * menu.price} TL"
             binding.textView3.text = "${it} Adet"
         })
         binding.shareMeal.setOnClickListener {
             share()
-            Log.v("Tag","clicked")
         }
         val builder = VmPolicy.Builder()
         StrictMode.setVmPolicy(builder.build())
@@ -83,9 +82,20 @@ class MealDetailFragment : BaseFragment() {
         binding.foodPrice.text = menu.price.toString()
         Glide.with(binding.root).load(menu.photo_url).into(binding.imageView)
         binding.submit.setOnClickListener {
+            if(viewModel.getToken() != -1) {
+                val orderList = ArrayList<OrderFood>()
+                val orderFood = OrderFood(menu.food_id,2,1)
+                orderList.add(orderFood)
+                val order = OrdersItem("",2,"",orderList,1,3,viewModel.getToken())
+                viewModel.postOrder(order).observe(viewLifecycleOwner,{
+                    //OrdersResponse not implemented
+                })
+            }
+            else{
+                Toast.makeText(requireContext(),"Please login to order",Toast.LENGTH_SHORT).show()
+            }
             findNavController().navigate(R.id.action_mealDetailFragment_to_mealAddingFragment)
         }
-
     }
     fun amountListener(){
         binding.increase.setOnClickListener {
@@ -95,14 +105,9 @@ class MealDetailFragment : BaseFragment() {
             viewModel.decreaseAmount()
         }
     }
-
     fun initListView(){
         listView = expandableLayout.secondLayout.findViewById(R.id.ingredientsListView)
-        val list = ArrayList<String>()
-        list.add("Köfte")
-        list.add("Turşu")
-        list.add("Marul")
-        list.add("Ketçap")
+        val list = args.clickedFood.ingredients.split(",")
         val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
             requireContext(),
             android.R.layout.simple_list_item_multiple_choice,
@@ -132,16 +137,10 @@ class MealDetailFragment : BaseFragment() {
                     startActivity(Intent.createChooser(shareIntent, "Send to"))
                 }
                 override fun onLoadCleared(placeholder: Drawable?) {
-                    // this is called when imageView is cleared on lifecycle call or for
-                    // some other reason.
-                    // if you are referencing the bitmap somewhere else too other than this imageView
-                    // clear it here as you can no longer have the bitmap
+
                 }
             })
-
-
     }
-
     fun getLocalBitmapUri(bmp: Bitmap): Uri? {
         var bmpUri: Uri? = null
         try {
