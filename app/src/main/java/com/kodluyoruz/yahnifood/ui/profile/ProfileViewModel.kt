@@ -21,4 +21,8 @@ class ProfileViewModel @Inject constructor(var apiRepository: ApiRepository) : V
         return apiRepository.getUserWithId(user_id)
     }
     fun getToken(): Int = this.token
+
+    fun logout() {
+        apiRepository.saveInt(SharedPrefManager.TOKEN, -1)
+    }
 }

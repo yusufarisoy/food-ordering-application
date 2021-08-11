@@ -48,10 +48,6 @@ class RestaurantDetailFragment : BaseFragment() {
             }
         })
 
-        //TODO: Move it to ProfileFragment
-        binding.btnLogout.setOnClickListener {
-            viewModel.logout()
-        }
         binding.addMeal.setOnClickListener {
             findNavController().navigate(RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToMealAddingFragment(restaurantClicked))
         }

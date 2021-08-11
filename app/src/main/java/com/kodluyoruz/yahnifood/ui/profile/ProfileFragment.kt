@@ -6,18 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabItem
 import com.kodluyoruz.yahnifood.data.entity.UsersItem
-import com.kodluyoruz.yahnifood.data.entity.UsersResponse
 import com.kodluyoruz.yahnifood.databinding.FragmentProfileBinding
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
-import com.kodluyoruz.yahnifood.ui.home.HomeFragmentArgs
-import com.kodluyoruz.yahnifood.ui.restaurant_detail.RestaurantDetailViewModel
 import com.kodluyoruz.yahnifood.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,7 +20,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class ProfileFragment : BaseFragment() {
 
     private val viewModel: ProfileViewModel by viewModels()
-    private val viewModelRestaurant: RestaurantDetailViewModel by viewModels()
     private lateinit var binding: FragmentProfileBinding
     private lateinit var viewPagerProfile: ViewPager2
     private lateinit var user: UsersItem
@@ -79,7 +73,7 @@ class ProfileFragment : BaseFragment() {
 
         //logout button
         binding.buttonLogout.setOnClickListener {
-            viewModelRestaurant.logout()
+            viewModel.logout()
             findNavController().navigate(ProfileFragmentDirections.actionProfileFragment2ToHomeFragment())
         }
     }

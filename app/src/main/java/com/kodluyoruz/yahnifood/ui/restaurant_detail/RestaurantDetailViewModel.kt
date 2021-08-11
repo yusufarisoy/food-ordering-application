@@ -38,9 +38,4 @@ class RestaurantDetailViewModel @Inject constructor(private val apiRepository: A
     fun navigationToMealDetailDone() {
         this.navigateToMealDetail.value = null
     }
-
-    fun logout() {
-        //TODO: After moving to profile add destination home and start without token!
-        apiRepository.saveInt(SharedPrefManager.TOKEN, -1)
-    }
 }
