@@ -20,4 +20,5 @@ class ProfileViewModel @Inject constructor(var apiRepository: ApiRepository) : V
     fun getUserWithId(user_id: Int): LiveData<Resource<UsersResponse>> {
         return apiRepository.getUserWithId(user_id)
     }
+    fun getToken(): Int = this.token
 }

@@ -87,16 +87,17 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun fetchUserData() {
-        viewModel.getUserWithId(user_id = 1).observe(viewLifecycleOwner,{
+        val token = viewModel.getToken()
+        viewModel.getUserWithId(token).observe(viewLifecycleOwner,{
             when(it.status){
 
                 Resource.Status.LOADING -> {
 
                 }
                 Resource.Status.SUCCESS -> {
-                    /*nameTextView.text = user.name
-                    surnameTextView.text = user.surname
-                    emailTextView.text = user.email*/
+                    nameTextView.text = it.data?.get(0)?.name
+                    surnameTextView.text = it.data?.get(0)?.surname
+                    emailTextView.text = it.data?.get(0)?.email
                 }
                 Resource.Status.ERROR -> {
 
