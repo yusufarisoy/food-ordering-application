@@ -78,6 +78,9 @@
             android:id="@+id/action_mealDetailFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/mealDetailFragment" />
+        <argument
+            android:name="restaurantId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/mainOnBoardingFragment"

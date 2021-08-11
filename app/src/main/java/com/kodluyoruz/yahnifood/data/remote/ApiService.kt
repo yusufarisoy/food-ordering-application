@@ -1,6 +1,7 @@
 package com.kodluyoruz.yahnifood.data.remote
 
 import com.kodluyoruz.yahnifood.data.entity.*
+import com.kodluyoruz.yahnifood.data.entity.dtos.OrderDto
 import com.kodluyoruz.yahnifood.data.entity.dtos.UserDto
 import retrofit2.Response
 import retrofit2.http.*
@@ -37,7 +38,7 @@ interface ApiService {
     fun postAddress(@Body() address: Address): Response <Address>
 
     @POST("orders")
-    suspend fun postOrder(@Body() order: OrdersItem): Response<OrdersResponse>
+    suspend fun postOrder(@Body() order: OrderDto): Response<OrdersResponse>
 
     @PUT("restaurants/{id}")
     suspend fun addMeal(@Path("id") id:String, @Body restaurant: RestaurantsItem) : Response<RestaurantsItem>

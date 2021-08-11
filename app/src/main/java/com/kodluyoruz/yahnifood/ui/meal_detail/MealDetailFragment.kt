@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
@@ -21,7 +22,7 @@ import com.bumptech.glide.request.transition.Transition
 import com.kodluyoruz.yahnifood.R
 import com.kodluyoruz.yahnifood.data.entity.Menu
 import com.kodluyoruz.yahnifood.data.entity.OrderFood
-import com.kodluyoruz.yahnifood.data.entity.OrdersItem
+import com.kodluyoruz.yahnifood.data.entity.dtos.OrderDto
 import com.kodluyoruz.yahnifood.databinding.FragmentFoodDetailBinding
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
 import com.skydoves.expandablelayout.ExpandableLayout
@@ -29,6 +30,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class MealDetailFragment : BaseFragment() {
@@ -79,12 +83,15 @@ class MealDetailFragment : BaseFragment() {
         binding.ingredients.text = menu.ingredients
         binding.foodPrice.text = menu.price.toString()
         Glide.with(binding.root).load(menu.photo_url).into(binding.foodImageView)
+        val sdf = SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z")
+        val currentDateandTime: String = sdf.format(Date())
         binding.submit.setOnClickListener {
                 val orderList = ArrayList<OrderFood>()
                 orderList.add(orderFood)
-                val order = OrdersItem("",2,binding.mealOrderNote.editText?.text.toString(),orderList,1,3,viewModel.getToken())
+                val order = OrderDto(currentDateandTime,binding.mealOrderNote.editText?.text.toString(),orderList,args.restaurantId,3,viewModel.getToken())
                 viewModel.postOrder(order).observe(viewLifecycleOwner,{
-                    Toast.makeText(requireContext(),"You ordered succesfully",Toast.LENGTH_SHORT)
+                    Toast.makeText(requireContext(),"You ordered succesfully",Toast.LENGTH_SHORT).show()
+                    findNavController().navigateUp()
                 })
         }
     }

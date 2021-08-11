@@ -80,7 +80,7 @@ class RestaurantDetailFragment : BaseFragment() {
 
         viewModel.getNavigateToMealDetail().observe(viewLifecycleOwner, {
             if (it != null) {
-                val action = RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToMealDetailFragment(it)
+                val action = RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToMealDetailFragment(it,restaurantClicked.id)
                 findNavController().navigate(action)
                 viewModel.navigationToMealDetailDone()
             }

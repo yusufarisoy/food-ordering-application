@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.kodluyoruz.yahnifood.data.ApiRepository
 import com.kodluyoruz.yahnifood.data.entity.OrdersItem
 import com.kodluyoruz.yahnifood.data.entity.OrdersResponse
+import com.kodluyoruz.yahnifood.data.entity.dtos.OrderDto
 import com.kodluyoruz.yahnifood.data.local.SharedPrefManager
 import com.kodluyoruz.yahnifood.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -29,7 +30,8 @@ class MealDetailViewModel @Inject constructor(private val apiRepository: ApiRepo
     }
     fun getToken(): Int = this.token
 
-    fun postOrder(order: OrdersItem) : LiveData<Resource<OrdersResponse>>{
+    fun postOrder(order: OrderDto) : LiveData<Resource<OrdersResponse>>{
         return apiRepository.postOrder(order)
     }
+
 }
