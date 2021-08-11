@@ -18,7 +18,7 @@ class AddressListFragment : BaseFragment() {
     private lateinit var binding: AddressListFragmentBinding
     private val adapter = AddressListAdapter()
     private val viewModel: AddressListViewModel by viewModels()
-    private val user_id = 2
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = AddressListFragmentBinding.inflate(inflater, container, false)
@@ -36,8 +36,8 @@ class AddressListFragment : BaseFragment() {
             findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToAddAddressFragment())
         }
 
-
-        viewModel.getUser(user_id).observe(viewLifecycleOwner,{
+        val token = viewModel.getToken()
+        viewModel.getUser(token).observe(viewLifecycleOwner,{
 
             when(it.status){
 
