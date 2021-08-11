@@ -2,6 +2,7 @@ package com.kodluyoruz.yahnifood.data.remote
 
 import com.kodluyoruz.yahnifood.data.entity.*
 import com.kodluyoruz.yahnifood.data.entity.dtos.OrderDto
+import com.kodluyoruz.yahnifood.data.entity.dtos.RestaurantDto
 import com.kodluyoruz.yahnifood.data.entity.dtos.UserDto
 import retrofit2.Response
 import retrofit2.http.*
@@ -31,7 +32,7 @@ interface ApiService {
     ): Response <OrdersResponse>
 
     @POST("restaurants")
-    suspend fun postRestaurant(@Body() restaurant: RestaurantsItem
+    suspend fun postRestaurant(@Body() restaurant: RestaurantDto
     ): Response <RestaurantsResponse>
 
     @POST("users")

@@ -5,6 +5,7 @@ import com.kodluyoruz.yahnifood.data.entity.OrdersItem
 import com.kodluyoruz.yahnifood.data.entity.RestaurantsItem
 import com.kodluyoruz.yahnifood.data.entity.UsersItem
 import com.kodluyoruz.yahnifood.data.entity.dtos.OrderDto
+import com.kodluyoruz.yahnifood.data.entity.dtos.RestaurantDto
 import com.kodluyoruz.yahnifood.data.entity.dtos.UserDto
 import com.kodluyoruz.yahnifood.data.local.LocalDataSource
 import com.kodluyoruz.yahnifood.data.remote.RemoteDataSource
@@ -53,7 +54,7 @@ class ApiRepository @Inject constructor(
         remoteDataSource.addMeal(id,restaurantsItem)
     }
     // todo: checkpoint
-    fun postRestaurant(restaurant: RestaurantsItem) = performNetworkOperation {
+    fun postRestaurant(restaurant: RestaurantDto) = performNetworkOperation {
         remoteDataSource.postRestaurant(restaurant)
     }
     //todo: chackpoint

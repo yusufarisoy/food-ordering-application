@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
 import com.kodluyoruz.yahnifood.data.entity.*
+import com.kodluyoruz.yahnifood.data.entity.dtos.RestaurantDto
 import com.kodluyoruz.yahnifood.databinding.AddRestaurantFragmentBinding
 import com.kodluyoruz.yahnifood.ui.address_list.AddressListViewModel
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
@@ -46,14 +48,17 @@ class AddRestaurantFragment: BaseFragment(){
             clearAllFields()
         }
         saveRestaurantButton.setOnClickListener {
-            addRestaurantViewModel.addRestaurant(submit()).observe(viewLifecycleOwner,{})
+            addRestaurantViewModel.addRestaurant(submit()).observe(viewLifecycleOwner,{
+                findNavController().navigateUp()
+
+            })
 
         }
     }
 
 
 
-    fun submit():RestaurantsItem{
+    fun submit():RestaurantDto{
         val address:Address = Address(
             title = "Isletme Adresi",
             add_date = Calendar.getInstance().time.toString(),
@@ -62,10 +67,9 @@ class AddRestaurantFragment: BaseFragment(){
             district = restaurantCountyField.text.toString(),
             last_update = Calendar.getInstance().time.toString()
         )
-        val item:RestaurantsItem = RestaurantsItem(
+        val item:RestaurantDto = RestaurantDto(
             address = address,
             average_delivery_time = 10,
-            id = 12312343,
             phone_number = restaurantPhoneNumberField.text.toString(),
             point = 5,
             review = "Harika",

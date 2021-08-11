@@ -5,6 +5,7 @@ import com.kodluyoruz.yahnifood.data.entity.OrdersItem
 import com.kodluyoruz.yahnifood.data.entity.RestaurantsItem
 import com.kodluyoruz.yahnifood.data.entity.UsersItem
 import com.kodluyoruz.yahnifood.data.entity.dtos.OrderDto
+import com.kodluyoruz.yahnifood.data.entity.dtos.RestaurantDto
 import com.kodluyoruz.yahnifood.data.entity.dtos.UserDto
 import com.kodluyoruz.yahnifood.utils.BaseDataSource
 import javax.inject.Inject
@@ -31,7 +32,7 @@ class RemoteDataSource @Inject constructor(
     suspend fun addMeal(id:String,restaurantsItem: RestaurantsItem) = getResult { apiService.addMeal(id,restaurantsItem) }
 
     // todo: checkpoint
-    suspend fun postRestaurant(restaurant:RestaurantsItem) =  getResult { apiService.postRestaurant(restaurant) }
+    suspend fun postRestaurant(restaurant:RestaurantDto) =  getResult { apiService.postRestaurant(restaurant) }
 
     suspend fun getAllRestaurants() = getResult { apiService.getAllRestaurants() }
 
