@@ -18,6 +18,8 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun postRegister(user: UserDto) = getResult { apiService.register(user) }
 
+    suspend fun postUser(user: UserDto) = getResult { apiService.updateUser(user) }
+
     suspend fun postLogin(email: String, password: String) = getResult { apiService.login(email, password) }
 
     suspend fun postOrder(order: OrdersItem) = getResult { apiService.postOrder(order) }

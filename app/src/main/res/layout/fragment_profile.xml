@@ -62,40 +62,40 @@
 
             <TextView
                 android:id="@+id/NameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="23dp"
                 android:layout_marginTop="44dp"
                 android:text="Name "
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.517"
+                app:layout_constraintHorizontal_bias="0.516"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/SurnameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="61dp"
+                android:layout_height="23dp"
                 android:layout_marginTop="44dp"
                 android:text="Surname "
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.070"
                 app:layout_constraintStart_toEndOf="@+id/NameTextView"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/EmailTextView"
-                android:layout_width="113dp"
-                android:layout_height="16dp"
+                android:layout_width="195dp"
+                android:layout_height="28dp"
                 android:text="Email Address"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.657"
+                app:layout_constraintHorizontal_bias="0.951"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/NameTextView"
-                app:layout_constraintVertical_bias="0.234" />
+                app:layout_constraintVertical_bias="0.215" />
 
             <ImageButton
                 android:id="@+id/buttonEditProfile"

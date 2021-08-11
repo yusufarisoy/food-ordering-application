@@ -21,6 +21,10 @@ interface ApiService {
     suspend fun register(@Body() user: UserDto
     ): Response <UsersItem>
 
+    @POST("users")
+    suspend fun updateUser(@Body() user: UserDto
+    ): Response <UsersItem>
+
     @GET("restaurants")
     fun getRestaurants(@Query("address.district") district: String
     ): Response <RestaurantsResponse>

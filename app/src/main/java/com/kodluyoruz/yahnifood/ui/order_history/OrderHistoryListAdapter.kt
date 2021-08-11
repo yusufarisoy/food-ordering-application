@@ -16,7 +16,7 @@ class OrderHistoryListAdapter : RecyclerView.Adapter<OrderHistoryListAdapter.Ord
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
         val item = orderList[position]
-        holder.bind(item)
+        //holder.bind(item)
     }
 
     fun setDataset(list: ArrayList<OrdersItem>) {
@@ -26,12 +26,12 @@ class OrderHistoryListAdapter : RecyclerView.Adapter<OrderHistoryListAdapter.Ord
 
     class OrderViewHolder(private val binding: OrderHistoryItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(order: OrdersItem) {
+        /*fun bind(order: OrdersItem) {
 
             binding.restaurantNameTV.text = order.id.toString()
             binding.orderRateTv.text = order.id.toString()
 
-        }
+        }*/
 
         companion object {
             fun from(parent: ViewGroup): OrderViewHolder {

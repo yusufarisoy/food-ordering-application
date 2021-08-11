@@ -27,6 +27,10 @@ class ApiRepository @Inject constructor(
         remoteDataSource.postRegister(user)
     }
 
+    fun updateUser(user: UserDto) = performNetworkOperation {
+        remoteDataSource.postUser(user)
+    }
+
     fun getOrders(user_id: Int) = performNetworkOperation {
         remoteDataSource.getOrderList(user_id)
     }

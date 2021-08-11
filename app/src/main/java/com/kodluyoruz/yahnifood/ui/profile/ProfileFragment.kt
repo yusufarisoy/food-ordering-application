@@ -35,8 +35,6 @@ class ProfileFragment : BaseFragment() {
     private lateinit var buttonAddress: Button
     private lateinit var buttonOrderHistory: Button
 
-    //private var token = HomeFragmentArgs.fromBundle(requireArguments()).token
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -102,7 +100,6 @@ class ProfileFragment : BaseFragment() {
                 Resource.Status.ERROR -> {
 
                 }
-
             }
         })
     }
