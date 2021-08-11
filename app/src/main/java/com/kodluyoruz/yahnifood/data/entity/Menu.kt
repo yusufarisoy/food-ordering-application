@@ -10,9 +10,9 @@ data class Menu(
     var food_id: Int,
     @SerializedName("ingredients")
     var ingredients: String,
-    @SerializedName(" name")
+    @SerializedName("name")
     var name: String,
-    @SerializedName("photo_url:")
+    @SerializedName("photo_url")
     var photo_url: String,
     @SerializedName("price")
     var price: Double

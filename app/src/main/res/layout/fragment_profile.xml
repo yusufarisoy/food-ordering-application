@@ -1,101 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
+    <ImageButton
+        android:id="@+id/buttonLogout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/round_button"
+        android:backgroundTint="@color/button_grey"
+        android:src="@drawable/ic_logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.932"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.007" />
+
     <androidx.cardview.widget.CardView
-        android:backgroundTint="@color/card_grey"
+        android:id="@+id/cardView3"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/card_grey"
         app:cardCornerRadius="16dp"
-        app:cardElevation="16dp">
+        app:cardElevation="16dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.078">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="@color/white"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="16dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/profileImageView"
-                android:src="@drawable/pizza_imageholder"
-                android:layout_width="116dp"
-                android:layout_height="116dp"
-                android:layout_gravity="center"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView4"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.061"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:id="@+id/profileImageView"
+                    android:layout_width="116dp"
+                    android:layout_height="116dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/pizza_imageholder" />
+            </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/NameTextView"
-            android:layout_marginStart="200dp"
-            android:layout_marginTop="45dp"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:text="Name Surname"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/NameTextView"
+                android:layout_width="40dp"
+                android:layout_height="23dp"
+                android:layout_marginTop="44dp"
+                android:text="Name "
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.516"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/EmailTextView"
-            android:layout_marginStart="200dp"
-            android:layout_marginTop="85dp"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:text="Email Address"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/SurnameTextView"
+                android:layout_width="61dp"
+                android:layout_height="23dp"
+                android:layout_marginTop="44dp"
+                android:text="Surname "
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.070"
+                app:layout_constraintStart_toEndOf="@+id/NameTextView"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/buttonEditProfile"
-            android:backgroundTint="@color/card_grey"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="350dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_edit" />
+            <TextView
+                android:id="@+id/EmailTextView"
+                android:layout_width="195dp"
+                android:layout_height="28dp"
+                android:text="Email Address"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.951"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/NameTextView"
+                app:layout_constraintVertical_bias="0.215" />
 
+            <ImageButton
+                android:id="@+id/buttonEditProfile"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:backgroundTint="@color/card_grey"
+                android:src="@drawable/ic_edit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.954"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.123" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPagerProfile"
-        android:layout_marginTop="220dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/linearLayoutButtons"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayoutProfile"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/buttonAddress"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
-            app:tabTextColor="@color/tab_text_grey"
-            app:tabIndicatorColor="@color/tab_text_grey"
-            app:tabSelectedTextColor="@color/tab_selected_grey"
-            android:layout_gravity="top">
+            android:backgroundTint="@color/card_grey"
+            android:text="MY ADDRESSES"
+            android:textColor="@color/black" />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/buttonOrderHistory"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/card_grey"
+            android:text="ORDER HISTORY"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/viewPagerProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/buttonAddress"
+            app:layout_constraintTop_toBottomOf="@+id/cardView3"
+            app:layout_constraintVertical_bias="0.0" />
 
-                android:text="ORDER HISTORY"/>
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="MY ADDRESSES"/>
-
-        </com.google.android.material.tabs.TabLayout>
-
-    </androidx.viewpager.widget.ViewPager>
+    </LinearLayout>
 
 
-</RelativeLayout>
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerProfile"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rectangle_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutButtons"
+        app:layout_constraintVertical_bias="0.0">
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -62,18 +62,25 @@
         <action
             android:id="@+id/action_restaurantDetailFragment_to_mealDetailFragment"
             app:destination="@id/mealDetailFragment" />
-    </fragment>
+    <action
+        android:id="@+id/action_restaurantDetailFragment_to_mealAddingFragment"
+        app:destination="@id/mealAddingFragment" />
+</fragment>
     <fragment
         android:id="@+id/mealDetailFragment"
         android:name="com.kodluyoruz.yahnifood.ui.meal_detail.MealDetailFragment"
         android:label="MealDetailFragment"
-        tools:layout="@layout/fragment_meal_detail">
+        tools:layout="@layout/fragment_food_detail">
         <argument
             android:name="clickedFood"
             app:argType="com.kodluyoruz.yahnifood.data.entity.Menu" />
         <action
-            android:id="@+id/action_mealDetailFragment_to_mealAddingFragment"
-            app:destination="@id/mealAddingFragment" />
+            android:id="@+id/action_mealDetailFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/mealDetailFragment" />
+        <argument
+            android:name="restaurantId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/mainOnBoardingFragment"
@@ -94,6 +101,12 @@
         <action
             android:id="@+id/action_profileFragment2_to_editProfileFragment2"
             app:destination="@id/editProfileFragment2" />
+        <action
+            android:id="@+id/action_profileFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment" />
+        <action
+            android:id="@+id/action_profileFragment2_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment2"
@@ -120,7 +133,11 @@
         android:id="@+id/mealAddingFragment"
         android:name="com.kodluyoruz.yahnifood.ui.meal_adding.MealAddingFragment"
         android:label="MealAddingFragment"
-        tools:layout="@layout/fragment_meal_adding"/>
+        tools:layout="@layout/fragment_food_adding">
+        <argument
+            android:name="restaurant"
+            app:argType="com.kodluyoruz.yahnifood.data.entity.RestaurantsItem" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.kodluyoruz.yahnifood.ui.login.LoginFragment"
@@ -140,6 +157,24 @@
         android:name="com.kodluyoruz.yahnifood.ui.register.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
+    </fragment>
+    <fragment
+        android:id="@+id/addressListFragment"
+        android:name="com.kodluyoruz.yahnifood.ui.address_list.AddressListFragment"
+        android:label="address_list_fragment"
+        tools:layout="@layout/address_list_fragment" >
+        <action
+            android:id="@+id/action_addressListFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAddressFragment"
+        android:name="com.kodluyoruz.yahnifood.ui.add_address.AddAddressFragment"
+        android:label="fragment_add_address"
+        tools:layout="@layout/fragment_add_address" >
+        <action
+            android:id="@+id/action_addAddressFragment_to_profileFragment2"
+            app:destination="@id/profileFragment2" />
     </fragment>
 
 </navigation>

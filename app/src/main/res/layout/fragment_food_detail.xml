@@ -18,7 +18,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/foodImageView"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="32dp"
@@ -32,18 +32,18 @@
                 android:layout_marginStart="16dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="@+id/imageView"
-                android:text="Büyük Boy Pizza Fırsatı" />
+                app:layout_constraintStart_toEndOf="@+id/foodImageView"
+                app:layout_constraintTop_toTopOf="@+id/foodImageView"
+                />
 
             <TextView
                 android:id="@+id/ingredients"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/name"
-                app:layout_constraintTop_toBottomOf="@id/name"
-                android:text="Seçeceğiniz Büyük Boy Pizza(Gurme pizzalar için 9.9 TL fark uygulanmaktadır)" />
+                app:layout_constraintTop_toBottomOf="@id/name" />
 
             <ImageView
                 android:id="@+id/decrease"
@@ -53,10 +53,10 @@
                 android:src="@drawable/remove"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toBottomOf="@+id/foodImageView" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/foodQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -72,9 +72,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/add"
-                app:layout_constraintBottom_toBottomOf="@+id/textView3"
-                app:layout_constraintStart_toEndOf="@+id/textView3"
-                app:layout_constraintTop_toTopOf="@+id/textView3" />
+                app:layout_constraintBottom_toBottomOf="@+id/foodQuantity"
+                app:layout_constraintStart_toEndOf="@+id/foodQuantity"
+                app:layout_constraintTop_toTopOf="@+id/foodQuantity" />
 
             <TextView
                 android:id="@+id/foodPrice"
@@ -85,13 +85,13 @@
                 app:layout_constraintBottom_toBottomOf="@+id/increase"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/increase"
-                android:text="39,90TL" />
+                 />
 
             <ImageView
                 android:id="@+id/shareMeal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/share"
                 app:layout_constraintBottom_toTopOf="@+id/foodPrice"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -138,17 +138,27 @@
         android:text="Order"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/expandableCard"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintTop_toBottomOf="@+id/mealOrderNote"
+        app:layout_constraintVertical_bias="0.25"
+        android:backgroundTint="@color/button_ice_blue"/>
 
-    <ImageView
-        android:id="@+id/testImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/mealOrderNote"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Note"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/expandableCard">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textLongMessage" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
 

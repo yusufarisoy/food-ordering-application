@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kodluyoruz.yahnifood.R
 import com.kodluyoruz.yahnifood.utils.IMealOnClick
 import com.kodluyoruz.yahnifood.databinding.FragmentRestaurantDetailBinding
 import com.kodluyoruz.yahnifood.data.entity.Menu
+import com.kodluyoruz.yahnifood.data.entity.RestaurantsItem
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,6 +21,7 @@ class RestaurantDetailFragment : BaseFragment() {
     private lateinit var binding: FragmentRestaurantDetailBinding
     private val viewModel: RestaurantDetailViewModel by viewModels()
     private val adapter = FoodAdapter()
+    private lateinit var restaurantClicked : RestaurantsItem
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentRestaurantDetailBinding.inflate(inflater, container, false)
@@ -33,7 +36,8 @@ class RestaurantDetailFragment : BaseFragment() {
     }
 
     private fun initViews() {
-        viewModel.setRestaurant(RestaurantDetailFragmentArgs.fromBundle(requireArguments()).restaurant)
+        restaurantClicked = RestaurantDetailFragmentArgs.fromBundle(requireArguments()).restaurant
+        viewModel.setRestaurant(restaurantClicked)
 
         binding.recyclerViewFoodList.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewFoodList.adapter = adapter
@@ -44,9 +48,8 @@ class RestaurantDetailFragment : BaseFragment() {
             }
         })
 
-        //TODO: Move it to ProfileFragment
-        binding.btnLogout.setOnClickListener {
-            viewModel.logout()
+        binding.addMeal.setOnClickListener {
+            findNavController().navigate(RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToMealAddingFragment(restaurantClicked))
         }
     }
 
@@ -73,7 +76,7 @@ class RestaurantDetailFragment : BaseFragment() {
 
         viewModel.getNavigateToMealDetail().observe(viewLifecycleOwner, {
             if (it != null) {
-                val action = RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToMealDetailFragment(it)
+                val action = RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToMealDetailFragment(it,restaurantClicked.id)
                 findNavController().navigate(action)
                 viewModel.navigationToMealDetailDone()
             }

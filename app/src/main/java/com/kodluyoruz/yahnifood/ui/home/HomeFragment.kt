@@ -27,7 +27,6 @@ import kotlin.math.log
 class HomeFragment : BaseFragment() {
     private var token: Int = -1
     private lateinit var binding: FragmentHomeBinding
-    private val mealList = ArrayList<Menu>()
     private lateinit var restaurantRecyclerView:RecyclerView
     private lateinit var restaurantRecyclerViewAdapter:RestaurantRecyclerViewAdapter
     private lateinit var dataset:ArrayList<RestaurantsItem>
@@ -94,10 +93,6 @@ class HomeFragment : BaseFragment() {
         token = HomeFragmentArgs.fromBundle(requireArguments()).token
         if(token==-1){
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToLoginFragment())
-        }
-        //TODO: GET from API
-        for(i in 1..3) {
-            mealList.add(Menu(i, "Lorem ipsum dolor sit amet.", "Hamburger", "https://www.burgerking.com.tr/cmsfiles/products/big-king-jr-menu-1.png?v=173", i * 10.15))
         }
     }
 

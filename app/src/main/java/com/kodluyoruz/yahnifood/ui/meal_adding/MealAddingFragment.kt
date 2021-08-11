@@ -15,17 +15,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.Nullable
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.kodluyoruz.yahnifood.data.entity.Address
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.kodluyoruz.yahnifood.data.entity.Menu
-import com.kodluyoruz.yahnifood.data.entity.Owner
 import com.kodluyoruz.yahnifood.data.entity.RestaurantsItem
-import com.kodluyoruz.yahnifood.databinding.FragmentMealAddingBinding
+import com.kodluyoruz.yahnifood.databinding.FragmentFoodAddingBinding
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
 import com.kodluyoruz.yahnifood.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,31 +34,31 @@ import java.io.IOException
 @AndroidEntryPoint
 class MealAddingFragment: BaseFragment() {
     private lateinit var image : ImageView
-    private lateinit var binding : FragmentMealAddingBinding
+    private lateinit var binding : FragmentFoodAddingBinding
     private val viewModel: MealAddingViewModel by viewModels()
     var selectedImage: Bitmap? = null
     var imageData: Uri? = null
+    private val args: MealAddingFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMealAddingBinding.inflate(inflater,container,false)
+        binding = FragmentFoodAddingBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
-
+        // checks if there is given permission by user for getting image from galery
         image.setOnClickListener {
             if (checkSelfPermission(
                     requireContext(),
                     Manifest.permission.READ_EXTERNAL_STORAGE
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
-                ActivityCompat.requestPermissions(
-                    requireActivity(),
+                requestPermissions(
                     arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
                     1
                 )
@@ -69,38 +68,45 @@ class MealAddingFragment: BaseFragment() {
                 startActivityForResult(intentToGallery, 2)
             }
         }
-        val menu = Menu(2,"asdasd","pizza","asdsad.png",35.0)
-        val list = ArrayList<Menu>()
-        list.add(menu)
-        val address = Address("","","","","","")
-        val owner = Owner("","","","","")
-        val restaurantsItem = RestaurantsItem(address,0,1,"",list,0,"asd",owner,"",0,"")
-        viewModel.addMeal("1",restaurantsItem).observe(viewLifecycleOwner, object:Observer<Resource<RestaurantsItem>>{
-            override fun onChanged(t: Resource<RestaurantsItem>?) {
-                when(t?.status){
-                    Resource.Status.ERROR -> Log.v("Tag",t.message!!)
-                    Resource.Status.SUCCESS ->{
-                        Log.v("Tag",t.data!!.name)
-                    }
-                }
-            }
 
-        })
+
     }
     fun initViews(){
-        image = binding.mealPhoto
+        image = binding.foodPhoto
+        // updates the restaurant with adding new meal
+        binding.addMeal.setOnClickListener {
+            val restaurantsItem = args.restaurant
+            val ingredients = binding.mealIngredientsEditText.editText?.text.toString()
+            val name = binding.foodNameEditText.editText?.text.toString()
+            val price = binding.foodPriceEditText.editText?.text.toString()
+            val doublePrice = price.toDouble()
+            val foodId = restaurantsItem.menu!!.size.plus(1)
+            val menu = Menu(foodId,ingredients,name,"https://www.livashop.com/Uploads/UrunResimleri/buyuk/karisik-pizza-e7f8.jpg",doublePrice)
+            var list : ArrayList<Menu> = ArrayList<Menu>(restaurantsItem.menu)
+            list.add(menu)
+            restaurantsItem.menu = list
+            viewModel.addMeal(restaurantsItem.id.toString(),restaurantsItem).observe(viewLifecycleOwner, object:Observer<Resource<RestaurantsItem>>{
+                override fun onChanged(t: Resource<RestaurantsItem>?) {
+                    when(t?.status){
+                        Resource.Status.ERROR -> Toast.makeText(requireContext(),"Order is failed.Please try again later",Toast.LENGTH_SHORT).show()
+                        Resource.Status.SUCCESS ->{
+                            Toast.makeText(requireContext(),"You ordered succesfully",Toast.LENGTH_SHORT).show()
+                            findNavController().navigateUp()
+                        }
+                    }
+                }
+            })
+        }
 
     }
-    fun submitMeal(){
-    }
-
+    //goes to galery if permission granted.If not, ask again for permission
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String?>,
         grantResults: IntArray
     ) {
         if (requestCode == 1) {
-            if (grantResults.size > 0 && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+            if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 val intentToGallery =
                     Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                 startActivityForResult(intentToGallery, 2)
@@ -108,7 +114,7 @@ class MealAddingFragment: BaseFragment() {
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
-
+    //Adds selected photo on UI
      override fun onActivityResult(
         requestCode: Int,
         resultCode: Int,
@@ -116,7 +122,6 @@ class MealAddingFragment: BaseFragment() {
     ) {
         if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
             imageData = data.data
-            Log.v("Tag",imageData.toString())
 
             try {
                 selectedImage = if (Build.VERSION.SDK_INT >= 28) {
@@ -133,10 +138,4 @@ class MealAddingFragment: BaseFragment() {
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
-
-    fun addMeal(){
-
-    }
-
-
 }

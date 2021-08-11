@@ -7,42 +7,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <TextView
+        android:id="@+id/addingFoodTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Adding A New Food"
+        android:textColor="@color/button_purple"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
-        android:id="@+id/mealPhoto"
+        android:id="@+id/foodPhoto"
         android:layout_width="175dp"
         android:layout_height="250dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/add_food_icon"/>
+        android:layout_marginTop="8dp"
+        android:src="@drawable/add_food_icon"
+        app:layout_constraintStart_toStartOf="@+id/addingFoodTitle"
+        app:layout_constraintTop_toBottomOf="@+id/addingFoodTitle" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/mealNameEditText"
+        android:id="@+id/foodNameEditText"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:hint="Name"
+        app:boxStrokeColor="@color/button_ice_blue"
+        app:hintTextColor="@color/button_ice_blue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/mealPhoto"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toEndOf="@+id/foodPhoto"
+        app:layout_constraintTop_toBottomOf="@id/addingFoodTitle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textShortMessage"/>
+            android:inputType="textShortMessage" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/mealPriceEditText"
+        android:id="@+id/foodPriceEditText"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        app:boxStrokeColor="@color/button_ice_blue"
+        app:hintTextColor="@color/button_ice_blue"
         android:hint="Price"
-        app:layout_constraintStart_toEndOf="@+id/mealPhoto"
-        app:layout_constraintTop_toBottomOf="@+id/mealNameEditText">
+        app:layout_constraintStart_toEndOf="@+id/foodPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/foodNameEditText">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -55,11 +74,12 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="TL"
         android:textSize="22dp"
-        app:layout_constraintBottom_toBottomOf="@+id/mealPriceEditText"
-        app:layout_constraintStart_toEndOf="@+id/mealPriceEditText"
-        app:layout_constraintTop_toTopOf="@+id/mealPriceEditText" />
+        app:layout_constraintBottom_toBottomOf="@+id/foodPriceEditText"
+        app:layout_constraintStart_toEndOf="@+id/foodPriceEditText"
+        app:layout_constraintTop_toTopOf="@+id/foodPriceEditText" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/mealIngredientsEditText"
@@ -67,8 +87,10 @@
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:hint="Ingredients"
-        app:layout_constraintStart_toStartOf="@+id/mealPriceEditText"
-        app:layout_constraintTop_toBottomOf="@+id/mealPriceEditText"
+        app:boxStrokeColor="@color/button_ice_blue"
+        app:hintTextColor="@color/button_ice_blue"
+        app:layout_constraintStart_toStartOf="@+id/foodPriceEditText"
+        app:layout_constraintTop_toBottomOf="@+id/foodPriceEditText"
         app:layout_constraintEnd_toEndOf="parent"
         >
 
@@ -88,7 +110,8 @@
         android:text="Add"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mealIngredientsEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/mealIngredientsEditText"
+        android:backgroundTint="@color/button_ice_blue"/>
 
 
 

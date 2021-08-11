@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kodluyoruz.yahnifood.databinding.AddressListFragmentBinding
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
+import com.kodluyoruz.yahnifood.ui.profile.ProfileFragmentDirections
 import com.kodluyoruz.yahnifood.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,7 +18,7 @@ class AddressListFragment : BaseFragment() {
     private lateinit var binding: AddressListFragmentBinding
     private val adapter = AddressListAdapter()
     private val viewModel: AddressListViewModel by viewModels()
-    private val user_id = 2
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = AddressListFragmentBinding.inflate(inflater, container, false)
@@ -30,8 +32,12 @@ class AddressListFragment : BaseFragment() {
         binding.addressListRV.layoutManager = LinearLayoutManager(context)
         binding.addressListRV.adapter = adapter
 
+        binding.buttonAddAddress.setOnClickListener {
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToAddAddressFragment())
+        }
 
-        viewModel.getUser(user_id).observe(viewLifecycleOwner,{
+        val token = viewModel.getToken()
+        viewModel.getUser(token).observe(viewLifecycleOwner,{
 
             when(it.status){
 

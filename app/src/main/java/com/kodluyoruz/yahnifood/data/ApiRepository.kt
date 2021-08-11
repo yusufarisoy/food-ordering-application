@@ -1,8 +1,10 @@
 package com.kodluyoruz.yahnifood.data
 
+import com.kodluyoruz.yahnifood.data.entity.Address
 import com.kodluyoruz.yahnifood.data.entity.OrdersItem
 import com.kodluyoruz.yahnifood.data.entity.RestaurantsItem
 import com.kodluyoruz.yahnifood.data.entity.UsersItem
+import com.kodluyoruz.yahnifood.data.entity.dtos.OrderDto
 import com.kodluyoruz.yahnifood.data.entity.dtos.UserDto
 import com.kodluyoruz.yahnifood.data.local.LocalDataSource
 import com.kodluyoruz.yahnifood.data.remote.RemoteDataSource
@@ -27,6 +29,10 @@ class ApiRepository @Inject constructor(
         remoteDataSource.postRegister(user)
     }
 
+    fun updateUser(id:String,usersItem: UsersItem) = performNetworkOperation {
+        remoteDataSource.updateUser(id,usersItem)
+    }
+
     fun getOrders(user_id: Int) = performNetworkOperation {
         remoteDataSource.getOrderList(user_id)
     }
@@ -35,8 +41,12 @@ class ApiRepository @Inject constructor(
         remoteDataSource.getRestaurantList(district)
     }
 
-    fun postOrder(order: OrdersItem) = performNetworkOperation {
+    fun postOrder(order: OrderDto) = performNetworkOperation {
         remoteDataSource.postOrder(order)
+    }
+
+    fun postAddress(address: Address) = performNetworkOperation {
+        remoteDataSource.postAddress(address)
     }
 
     fun addMeal(id:String,restaurantsItem: RestaurantsItem) = performNetworkOperation {
