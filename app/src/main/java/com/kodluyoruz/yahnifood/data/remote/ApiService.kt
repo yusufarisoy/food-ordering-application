@@ -22,7 +22,7 @@ interface ApiService {
     ): Response <UsersItem>
 
     @GET("restaurants")
-    fun getRestaurants(@Query("address.district") district: String
+    suspend fun getRestaurants(@Query("address.district") district: String
     ): Response <RestaurantsResponse>
 
     @GET("orders")
@@ -30,7 +30,7 @@ interface ApiService {
     ): Response <OrdersResponse>
 
     @POST("restaurants")
-    fun postRestaurant(@Body() restaurant: RestaurantsItem
+    suspend fun postRestaurant(@Body() restaurant: RestaurantsItem
     ): Response <RestaurantsResponse>
 
     @POST("orders")
