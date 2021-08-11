@@ -20,6 +20,21 @@ Then, you need to watch the database.json file that we provide you on server fil
 ```bash
 json-server --watch database.json
 ```
+## Splash,OnBoarding,Login and Register Screen
+<img src="./screens/Splash-OnBoarding-Login.gif" 
+  alt="gif" 
+  height="500"
+  />
+## Food Adding Screen
+<img src="./screens/addFood.gif" 
+  alt="gif" 
+  height="500"
+  />
+## Food Ordering Screen
+<img src="./screens/foodOrder.gif" 
+  alt="gif" 
+  height="500"
+  />
 ## Team
 - Hilal Malta
 - Nermin Kemancı
