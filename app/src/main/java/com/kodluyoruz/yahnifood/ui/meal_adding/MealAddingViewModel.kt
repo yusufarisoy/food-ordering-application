@@ -18,22 +18,4 @@ class MealAddingViewModel @Inject constructor(val repository: ApiRepository): Vi
     fun addMeal(id:String,restaurantsItem: RestaurantsItem): LiveData<Resource<RestaurantsItem>>{
         return repository.addMeal(id,restaurantsItem)
     }
-
-    /*
-    fun addMeal(){
-        service.getUser(1).enqueue(object : Callback<UsersResponse>{
-            override fun onResponse(call: Call<UsersResponse>, response: Response<UsersResponse>) {
-                Log.v("Tag","${response.body()?.size}")
-            }
-
-            override fun onFailure(call: Call<UsersResponse>, t: Throwable) {
-                Log.v("Tag",t.message!!)
-            }
-
-        })
-    }
-
-
-     */
-
 }

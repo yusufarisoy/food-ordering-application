@@ -8,14 +8,12 @@ import android.os.Bundle
 import android.os.Environment
 import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
@@ -24,19 +22,17 @@ import com.kodluyoruz.yahnifood.R
 import com.kodluyoruz.yahnifood.data.entity.Menu
 import com.kodluyoruz.yahnifood.data.entity.OrderFood
 import com.kodluyoruz.yahnifood.data.entity.OrdersItem
-import com.kodluyoruz.yahnifood.databinding.FragmentMealDetailBinding
+import com.kodluyoruz.yahnifood.databinding.FragmentFoodDetailBinding
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
-import com.kodluyoruz.yahnifood.utils.Resource
 import com.skydoves.expandablelayout.ExpandableLayout
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.lifecycle.HiltViewModel
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 
 @AndroidEntryPoint
 class MealDetailFragment : BaseFragment() {
-    private lateinit var binding: FragmentMealDetailBinding
+    private lateinit var binding: FragmentFoodDetailBinding
     private lateinit var expandableLayout: ExpandableLayout
     private lateinit var listView :ListView
     private lateinit var menu : Menu
@@ -48,7 +44,7 @@ class MealDetailFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMealDetailBinding.inflate(inflater,container,false)
+        binding = FragmentFoodDetailBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -56,10 +52,10 @@ class MealDetailFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         initListView()
-        amountListener()
+        quantityListener()
         viewModel.amount.observe(viewLifecycleOwner, Observer {
             binding.foodPrice.text = "${it * menu.price} TL"
-            binding.textView3.text = "${it} Adet"
+            binding.foodQuantity.text = "${it} Adet"
             orderFood = OrderFood(menu.food_id,2,it)
         })
         val builder = VmPolicy.Builder()
@@ -82,23 +78,18 @@ class MealDetailFragment : BaseFragment() {
         binding.name.text = menu.name
         binding.ingredients.text = menu.ingredients
         binding.foodPrice.text = menu.price.toString()
-        Glide.with(binding.root).load(menu.photo_url).into(binding.imageView)
+        Glide.with(binding.root).load(menu.photo_url).into(binding.foodImageView)
         binding.submit.setOnClickListener {
-            if(viewModel.getToken() != -1) {
                 val orderList = ArrayList<OrderFood>()
                 orderList.add(orderFood)
                 val order = OrdersItem("",2,binding.mealOrderNote.editText?.text.toString(),orderList,1,3,viewModel.getToken())
                 viewModel.postOrder(order).observe(viewLifecycleOwner,{
                     Toast.makeText(requireContext(),"You ordered succesfully",Toast.LENGTH_SHORT)
                 })
-            }
-            else{
-                Toast.makeText(requireContext(),"Please login to order",Toast.LENGTH_SHORT).show()
-            }
-
         }
     }
-    fun amountListener(){
+    //updates the quantity in viewModel by listening the - and + button
+    fun quantityListener(){
         binding.increase.setOnClickListener {
             viewModel.addAmount()
         }
@@ -106,6 +97,7 @@ class MealDetailFragment : BaseFragment() {
             viewModel.decreaseAmount()
         }
     }
+    // creates the expandable list view
     fun initListView(){
         listView = expandableLayout.secondLayout.findViewById(R.id.ingredientsListView)
         val list = args.clickedFood.ingredients.split(",")
@@ -115,13 +107,13 @@ class MealDetailFragment : BaseFragment() {
             list
         )
         listView.adapter = adapter
-
         listView.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id -> // change the checkbox state
                 val checkedTextView = view as CheckedTextView
                 checkedTextView.isChecked = !checkedTextView.isChecked
             }
     }
+    // shares the image,name and price of the meal
     fun share(){
         Glide.with(this)
             .asBitmap()
