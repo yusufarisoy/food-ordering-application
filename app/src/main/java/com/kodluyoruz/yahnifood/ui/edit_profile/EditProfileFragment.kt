@@ -8,12 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.textfield.TextInputEditText
 import com.kodluyoruz.yahnifood.data.entity.UsersItem
-import com.kodluyoruz.yahnifood.data.entity.dtos.UserDto
 import com.kodluyoruz.yahnifood.databinding.FragmentEditProfileBinding
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
-import com.kodluyoruz.yahnifood.ui.home.HomeFragmentArgs
 import com.kodluyoruz.yahnifood.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,9 +19,7 @@ class EditProfileFragment : BaseFragment() {
 
     private lateinit var binding: FragmentEditProfileBinding
     private val viewModel: EditProfileViewModel by viewModels()
-    private lateinit var user: UserDto
-    //val token = viewModel.getToken()
-
+    private lateinit var user: UsersItem
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -73,9 +68,12 @@ class EditProfileFragment : BaseFragment() {
         }
         //UPDATE PROFILE
         binding.buttonUpdateProfile.setOnClickListener {
+
             //updateProfile()
+
             Toast.makeText(context,"Profile updated!",Toast.LENGTH_LONG).show()
-            findNavController().navigate(EditProfileFragmentDirections.actionEditProfileFragment2ToProfileFragment2())
+            //findNavController().navigate(EditProfileFragmentDirections.actionEditProfileFragment2ToProfileFragment2())
+            findNavController().popBackStack()
         }
     }
     /*private fun updateProfile(){
@@ -85,22 +83,26 @@ class EditProfileFragment : BaseFragment() {
         var phoneNumber = binding.textInputEditPhone
         var ppUrl = binding.textInputEditPPURL
 
-        viewModel.updateUser(user).observe(viewLifecycleOwner,{
-            when(it.status){
+        val token = viewModel.getToken()
+        viewModel.updateUser(token.toString(),user).observe(viewLifecycleOwner,object:Observer<Resource<UsersItem>>{
+            override fun onChanged(t: Resource<UsersItem>?) {
+                when(t?.status){
 
-                Resource.Status.LOADING -> {
+                    Resource.Status.LOADING -> {
 
-                }
-                Resource.Status.SUCCESS -> {
-                    it.data?.name = name.text.toString()
-                    it.data?.surname = surname.text.toString()
-                    it.data?.email = email.text.toString()
-                    it.data?.phone_number = phoneNumber.text.toString()
-                    it.data?.photo_url = ppUrl.text.toString()
+                    }
+                    Resource.Status.SUCCESS -> {
+                        *//*it.data?.get(0)?.name = name.text.toString()
+                        it.data?.get(0)?.surname = surname.text.toString()
+                        it.data?.get(0)?.email = email.text.toString()
+                        it.data?.get(0)?.phone_number = phoneNumber.text.toString()
+                        it.data?.get(0)?.photo_url = ppUrl.text.toString()*//*
 
-                }
-                Resource.Status.ERROR -> {
+                        t?.data?.name = name.text.toString()
+                    }
+                    Resource.Status.ERROR -> {
 
+                    }
                 }
             }
         })

@@ -21,10 +21,6 @@ interface ApiService {
     suspend fun register(@Body() user: UserDto
     ): Response <UsersItem>
 
-    @POST("users")
-    suspend fun updateUser(@Body() user: UserDto
-    ): Response <UsersItem>
-
     @GET("restaurants")
     fun getRestaurants(@Query("address.district") district: String
     ): Response <RestaurantsResponse>
@@ -37,11 +33,17 @@ interface ApiService {
     fun postRestaurant(@Body() restaurant: RestaurantsItem
     ): Response <RestaurantsResponse>
 
+    @POST("users")
+    fun postAddress(@Body() address: Address): Response <Address>
+
     @POST("orders")
     suspend fun postOrder(@Body() order: OrdersItem): Response<OrdersResponse>
 
     @PUT("restaurants/{id}")
     suspend fun addMeal(@Path("id") id:String, @Body restaurant: RestaurantsItem) : Response<RestaurantsItem>
+
+    @PUT("users/{id}")
+    suspend fun updateUser(@Path("id") id:String, @Body user: UsersItem) : Response<UsersItem>
 
     @GET("restaurants")
     suspend fun getAllRestaurants():Response<RestaurantsResponse>

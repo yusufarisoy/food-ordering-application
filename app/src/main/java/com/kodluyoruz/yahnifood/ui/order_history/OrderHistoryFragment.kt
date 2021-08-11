@@ -8,18 +8,23 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kodluyoruz.yahnifood.data.entity.OrderFood
+import com.kodluyoruz.yahnifood.data.entity.OrdersItem
+import com.kodluyoruz.yahnifood.data.entity.UsersItem
 import com.kodluyoruz.yahnifood.databinding.AddressListFragmentBinding
 import com.kodluyoruz.yahnifood.databinding.FragmentOrderHistoryBinding
 import com.kodluyoruz.yahnifood.databinding.OrderHistoryItemBinding
 import com.kodluyoruz.yahnifood.ui.base.BaseFragment
 import com.kodluyoruz.yahnifood.utils.Resource
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 
 class OrderHistoryFragment: BaseFragment() {
 
     private lateinit var binding: FragmentOrderHistoryBinding
     private val adapter = OrderHistoryListAdapter()
     private val viewModel: OrderHistoryViewModel by viewModels()
-    private val user_id = 1
+    private lateinit var orders: OrdersItem
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,8 +41,8 @@ class OrderHistoryFragment: BaseFragment() {
         binding.orderListRV.layoutManager = LinearLayoutManager(context)
         binding.orderListRV.adapter = adapter
 
-
-        /*viewModel.getOrders(user_id).observe(viewLifecycleOwner,{
+        /*val token = viewModel.getToken()
+        viewModel.getOrders(token).observe(viewLifecycleOwner,{
 
             when(it.status){
 

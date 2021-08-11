@@ -26,12 +26,12 @@ class OrderHistoryListAdapter : RecyclerView.Adapter<OrderHistoryListAdapter.Ord
 
     class OrderViewHolder(private val binding: OrderHistoryItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        /*fun bind(order: OrdersItem) {
+        fun bind(order: OrdersItem) {
 
-            binding.restaurantNameTV.text = order.id.toString()
+            binding.dateTV.text = order.date
             binding.orderRateTv.text = order.id.toString()
 
-        }*/
+        }
 
         companion object {
             fun from(parent: ViewGroup): OrderViewHolder {

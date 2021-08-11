@@ -33,7 +33,8 @@ class ChangePasswordFragment : BaseFragment() {
     private fun initViews() {
 
         binding.buttonUpdatePassword.setOnClickListener {
-            findNavController().navigate(ChangePasswordFragmentDirections.actionChangePasswordFragmentToEditProfileFragment2())
+            //findNavController().navigate(ChangePasswordFragmentDirections.actionChangePasswordFragmentToEditProfileFragment2())
+            findNavController().popBackStack()
         }
     }
 }

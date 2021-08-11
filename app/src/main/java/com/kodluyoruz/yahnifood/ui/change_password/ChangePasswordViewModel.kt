@@ -22,9 +22,9 @@ class ChangePasswordViewModel @Inject constructor(var apiRepository: ApiReposito
         return apiRepository.getUserWithId(user_id)
     }
 
-    fun updateUser(user: UserDto): LiveData<Resource<UsersItem>> {
+    /*fun updateUser(user: UsersItem): LiveData<Resource<UsersItem>> {
         return apiRepository.updateUser(user)
-    }
+    }*/
 
     fun getToken(): Int = this.token
 }
