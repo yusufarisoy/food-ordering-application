@@ -90,7 +90,7 @@ class MealAddingFragment: BaseFragment() {
                     when(t?.status){
                         Resource.Status.ERROR -> Toast.makeText(requireContext(),"Order is failed.Please try again later",Toast.LENGTH_SHORT).show()
                         Resource.Status.SUCCESS ->{
-                            Toast.makeText(requireContext(),"You ordered succesfully",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(),"You add the food succesfully",Toast.LENGTH_SHORT).show()
                             findNavController().navigateUp()
                         }
                     }
