@@ -1,0 +1,276 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "yusuf@hotmail.com",
+      "password": "asd",
+      "name": "Yusuf",
+      "surname": "ARISOY",
+      "phone_number": "+905566874523",
+      "address_list": [
+        {
+          "title": "Ev Pendik",
+          "city": "Istanbul",
+          "district": "Pendik",
+          "address": "Yeni Mah. Ekim Sok.",
+          "add_date": "2021-27-07 19:35",
+          "last_update": "2021-27-07 19:35"
+        },
+        {
+          "title": "İş",
+          "city": "Istanbul",
+          "district": "Beykoz",
+          "address": "Soğuksu Mah. Tunalı Cad.",
+          "add_date": "2021-27-07 19:35",
+          "last_update": "2021-27-07 19:35"
+        }
+      ],
+      "photo_url": "user.png"
+    },
+    {
+      "id": 2,
+      "email": "hilal@hotmail.com",
+      "password": "asdf",
+      "name": "Hilal",
+      "surname": "Malta",
+      "phone_number": "+905566874523",
+      "address_list": [
+        {
+          "title": "Evim Beykoz",
+          "city": "Istanbul",
+          "district": "Beykoz",
+          "address": "Soğuksu Mah. Tunalı Cad.",
+          "add_date": "2021-27-07 19:35",
+          "last_update": "2021-27-07 19:35"
+        }
+      ],
+      "photo_url": "user.png"
+    },
+    {
+      "address_list": [],
+      "email": "ahmet@gmail.com",
+      "name": "Ahmet",
+      "password": "123456",
+      "phone_number": "+9055555555",
+      "photo_url": "user.png",
+      "surname": "Gültekin",
+      "id": 3
+    }
+  ],
+  "restaurants": [
+    {
+      "address": {
+        "add_date": "2021-27-07 19:35",
+        "address": " Küçük Çamlıca Mh, Üçpınarlar Cd. No:32",
+        "city": "Istanbul",
+        "district": "Üsküda",
+        "last_update": "2021-27-07 19:35",
+        "title": "Burgerci"
+      },
+      "average_delivery_time": 30,
+      "id": 2,
+      "menu": [
+        {
+          "food_id": 1,
+          "ingredients": "Ekmek, Kofte, Domates, Kivircik, Patates kizartmasi",
+          "name": "Hamburger",
+          "photo_url": "https://cdn.firsatbufirsat.com/files/images/deal-image/image/1200x1200/609/6090094_59a5.jpg?r=2",
+          "price": 54.95
+        },
+        {
+          "food_id": 2,
+          "ingredients": "Mozeralla Peyniri,Sucuk,Sosis,Biber,Mantar",
+          "name": "Kücük Boy Pizza",
+          "photo_url": "https://www.livashop.com/Uploads/UrunResimleri/buyuk/karisik-pizza-e7f8.jpg",
+          "price": 25.9
+        },
+        {
+          "food_id": 3,
+          "ingredients": "Sucuk,Biber,Mantar,Misir",
+          "name": "Orta Boy Pizza",
+          "photo_url": "https://www.livashop.com/Uploads/UrunResimleri/buyuk/karisik-pizza-e7f8.jpg",
+          "price": 39.9
+        },
+        {
+          "food_id": 4,
+          "ingredients": "Sucuk,Sosis,Misir,Biber,Mantar,Pizza Sosu,Mozeralla Peyniri",
+          "name": "Büyük Boy Pizza",
+          "photo_url": "https://www.livashop.com/Uploads/UrunResimleri/buyuk/karisik-pizza-e7f8.jpg",
+          "price": 59.9
+        }
+      ],
+      "min_order": 30,
+      "name": "Burger",
+      "owner": {
+        "email": "ali@burger.com",
+        "name": "Ali",
+        "password": "asd",
+        "phone_number": "+905566874523",
+        "surname": "KAYA"
+      },
+      "phone_number": "4441234",
+      "photo_url": "user.png",
+      "point": 4,
+      "review": "Dandik"
+    },
+    {
+      "address": {
+        "add_date": "Wed Aug 11 19:32:36 GMT 2021",
+        "address": "Yunus Emre Mh. 4400/15 Sk. no:5\nKarabaglar/Izmir",
+        "city": "Izmir",
+        "district": "Karabaglar",
+        "last_update": "Wed Aug 11 19:32:36 GMT 2021",
+        "title": "Isletme Adresi"
+      },
+      "average_delivery_time": 10,
+      "menu": [],
+      "min_order": 20,
+      "name": "Dönerci",
+      "owner": {
+        "email": "",
+        "name": "",
+        "password": "",
+        "phone_number": "",
+        "surname": ""
+      },
+      "phone_number": "+095341111111",
+      "photo_url": "",
+      "point": 5,
+      "review": "Harika",
+      "id": 12312344
+    },
+    {
+      "address": {
+        "add_date": "Wed Aug 11 19:36:05 GMT 2021",
+        "address": "",
+        "city": "Istanbul",
+        "district": "Kadiköy",
+        "last_update": "Wed Aug 11 19:36:05 GMT 2021",
+        "title": "Isletme Adresi"
+      },
+      "average_delivery_time": 10,
+      "menu": [],
+      "min_order": 20,
+      "name": "Tatlici",
+      "owner": {
+        "email": "",
+        "name": "",
+        "password": "",
+        "phone_number": "",
+        "surname": ""
+      },
+      "phone_number": "+902122222222",
+      "photo_url": "",
+      "point": 5,
+      "review": "Harika",
+      "id": 12312345
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "restaurant_id": 1,
+      "user_id": 1,
+      "date": "2021-27-07 19:35",
+      "note": "Sogan olmasin",
+      "status": 3,
+      "order_food_list": [
+        {
+          "id": 1,
+          "food_id": 1,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "date": "",
+      "id": 2,
+      "note": "",
+      "order_food_list": [
+        {
+          "food_id": 1,
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "restaurant_id": 1,
+      "status": 3,
+      "user_id": 1
+    },
+    {
+      "date": "",
+      "note": "Bol misir",
+      "order_food_list": [
+        {
+          "food_id": 4,
+          "id": 2,
+          "quantity": 2
+        }
+      ],
+      "restaurant_id": 1,
+      "status": 3,
+      "user_id": 1,
+      "id": 3
+    },
+    {
+      "date": "2021.08.11 AD at 16:13:26 GMT",
+      "note": "bol biber",
+      "order_food_list": [
+        {
+          "food_id": 3,
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "restaurant_id": 1,
+      "status": 3,
+      "user_id": 1,
+      "id": 4
+    },
+    {
+      "date": "2021.08.11 AD at 16:14:37 GMT",
+      "note": "q",
+      "order_food_list": [
+        {
+          "food_id": 2,
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "restaurant_id": 2,
+      "status": 3,
+      "user_id": 1,
+      "id": 5
+    },
+    {
+      "date": "2021.08.11 AD at 19:57:07 GMT",
+      "note": "Biraz hizli",
+      "order_food_list": [
+        {
+          "food_id": 1,
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "restaurant_id": 2,
+      "status": 3,
+      "user_id": 3,
+      "id": 6
+    },
+    {
+      "date": "2021.08.11 AD at 20:08:43 GMT",
+      "note": "Hizli olabilirse cok mutlu olurum",
+      "order_food_list": [
+        {
+          "food_id": 2,
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "restaurant_id": 2,
+      "status": 3,
+      "user_id": 3,
+      "id": 7
+    }
+  ]
+}
