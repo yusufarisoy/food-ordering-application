@@ -27,7 +27,7 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun postOrder(order: OrderDto) = getResult { apiService.postOrder(order) }
 
-    suspend fun postAddress(address: Address) = getResult { apiService.postAddress(address) }
+    suspend fun postAddress(id: String,user: UsersItem) = getResult { apiService.postAddress(id,user) }
 
     suspend fun addMeal(id:String,restaurantsItem: RestaurantsItem) = getResult { apiService.addMeal(id,restaurantsItem) }
 

@@ -56,6 +56,7 @@ class EditProfileFragment : BaseFragment() {
                     email.setText(it.data?.get(0)?.email)
                     phoneNumber.setText(it.data?.get(0)?.phone_number)
                     ppUrl.setText(it.data?.get(0)?.photo_url)
+                    user = it.data!![0]
                 }
                 Resource.Status.ERROR -> {
 
@@ -69,21 +70,26 @@ class EditProfileFragment : BaseFragment() {
         //UPDATE PROFILE
         binding.buttonUpdateProfile.setOnClickListener {
 
-            //updateProfile()
+            updateProfile()
 
             Toast.makeText(context,"Profile updated!",Toast.LENGTH_LONG).show()
             //findNavController().navigate(EditProfileFragmentDirections.actionEditProfileFragment2ToProfileFragment2())
             findNavController().popBackStack()
         }
     }
-    /*private fun updateProfile(){
+    private fun updateProfile(){
         var name = binding.textInputEditName
         var surname = binding.textInputEditSurname
         var email = binding.textInputEditEmail
         var phoneNumber = binding.textInputEditPhone
         var ppUrl = binding.textInputEditPPURL
-
         val token = viewModel.getToken()
+        // updating current UI with the entered new values
+        user.name = name.text.toString()
+        user.surname = surname.text.toString()
+        user.email = email.text.toString()
+        user.phone_number = phoneNumber.text.toString()
+        user.photo_url = ppUrl.text.toString()
         viewModel.updateUser(token.toString(),user).observe(viewLifecycleOwner,object:Observer<Resource<UsersItem>>{
             override fun onChanged(t: Resource<UsersItem>?) {
                 when(t?.status){
@@ -92,13 +98,12 @@ class EditProfileFragment : BaseFragment() {
 
                     }
                     Resource.Status.SUCCESS -> {
-                        *//*it.data?.get(0)?.name = name.text.toString()
-                        it.data?.get(0)?.surname = surname.text.toString()
-                        it.data?.get(0)?.email = email.text.toString()
-                        it.data?.get(0)?.phone_number = phoneNumber.text.toString()
-                        it.data?.get(0)?.photo_url = ppUrl.text.toString()*//*
+                        name.setText(t.data?.name)
+                        surname.setText(t.data?.surname)
+                        email.setText(t.data?.email)
+                        phoneNumber.setText(t.data?.phone_number)
+                        ppUrl.setText(t.data?.photo_url)
 
-                        t?.data?.name = name.text.toString()
                     }
                     Resource.Status.ERROR -> {
 
@@ -106,5 +111,5 @@ class EditProfileFragment : BaseFragment() {
                 }
             }
         })
-    }*/
+    }
 }

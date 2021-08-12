@@ -21,8 +21,8 @@ class AddAddressViewModel @Inject constructor(var apiRepository: ApiRepository) 
     fun getUserWithId(user_id: Int): LiveData<Resource<UsersResponse>> {
         return apiRepository.getUserWithId(user_id)
     }
-    fun postAddress(address: Address) : LiveData<Resource<Address>>{
-        return apiRepository.postAddress(address)
+    fun postAddress(id:String, user: UsersItem): LiveData<Resource<UsersItem>>{
+        return apiRepository.updateUser(id, user)
     }
 
     fun getToken(): Int = this.token

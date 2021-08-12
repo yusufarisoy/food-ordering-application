@@ -1,6 +1,7 @@
 package com.kodluyoruz.yahnifood.ui.address_list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +29,6 @@ class AddressListFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.addressListRV.layoutManager = LinearLayoutManager(context)
         binding.addressListRV.adapter = adapter
 
@@ -45,7 +45,6 @@ class AddressListFragment : BaseFragment() {
 
                 }
                 Resource.Status.SUCCESS -> {
-
                     it.data?.get(0)?.address?.let { it1 -> adapter.setDataset(it1) }
 
                 }

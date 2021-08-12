@@ -46,8 +46,8 @@ class ApiRepository @Inject constructor(
         remoteDataSource.postOrder(order)
     }
 
-    fun postAddress(address: Address) = performNetworkOperation {
-        remoteDataSource.postAddress(address)
+    fun postAddress(id: String,user: UsersItem) = performNetworkOperation {
+        remoteDataSource.postAddress(id,user)
     }
 
     fun addMeal(id:String,restaurantsItem: RestaurantsItem) = performNetworkOperation {

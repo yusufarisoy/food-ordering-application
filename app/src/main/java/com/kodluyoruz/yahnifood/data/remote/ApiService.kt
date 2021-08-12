@@ -35,8 +35,8 @@ interface ApiService {
     suspend fun postRestaurant(@Body() restaurant: RestaurantDto
     ): Response <RestaurantsResponse>
 
-    @POST("users")
-    fun postAddress(@Body() address: Address): Response <Address>
+    @PUT("users/{id}")
+    suspend fun postAddress(@Path("id") id:String,@Body() user: UsersItem) : Response <UsersItem>
 
     @POST("orders")
     suspend fun postOrder(@Body() order: OrderDto): Response<OrdersResponse>

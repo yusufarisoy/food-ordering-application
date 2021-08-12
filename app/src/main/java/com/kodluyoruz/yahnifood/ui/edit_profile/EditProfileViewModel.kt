@@ -23,9 +23,9 @@ class EditProfileViewModel @Inject constructor(var apiRepository: ApiRepository)
         return apiRepository.getUserWithId(user_id)
     }
 
-    /*fun updateUser(id:String, user: UsersItem): LiveData<Resource<UsersItem>>{
+    fun updateUser(id:String, user: UsersItem): LiveData<Resource<UsersItem>>{
         return apiRepository.updateUser(id, user)
-    }*/
+    }
 
     fun getToken(): Int = this.token
 

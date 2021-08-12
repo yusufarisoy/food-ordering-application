@@ -1,10 +1,12 @@
 package com.kodluyoruz.yahnifood.ui.add_address
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.kodluyoruz.yahnifood.data.entity.Address
@@ -21,9 +23,10 @@ import dagger.hilt.android.AndroidEntryPoint
 class AddAddressFragment : BaseFragment() {
 
     private val viewModel: AddAddressViewModel by viewModels()
-    private lateinit var address: Address
+    private  var token = -1
     private lateinit var binding: FragmentAddAddressBinding
     private lateinit var buttonAddAddress: Button
+    private lateinit var user: UsersItem
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,30 +40,40 @@ class AddAddressFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        getCurrentUser()
         buttonAddAddress = binding.buttonAddAddress
         buttonAddAddress.setOnClickListener{
-            //findNavController().navigate(AddAddressFragmentDirections.actionAddAddressFragmentToProfileFragment2())
-            //addAddress()
-            findNavController().popBackStack()
+            addAddress()
         }
 
     }
-    private fun addAddress(){
-        var title = binding.textInputEditTextAddressTitle
-        var district = binding.textInputEditTextAddressDistrict
-        var addressDetail = binding.textInputEditTextAddressDetail
-
-        viewModel.postAddress(address).observe(viewLifecycleOwner,{
+    fun getCurrentUser(){
+        token = viewModel.getToken()
+        viewModel.getUserWithId(token).observe(viewLifecycleOwner,{
             when(it.status){
 
                 Resource.Status.LOADING -> {
 
                 }
                 Resource.Status.SUCCESS -> {
-                    it.data?.title = title.text.toString()
+                    user = it.data!![0]
                 }
                 Resource.Status.ERROR -> {
 
+                }
+            }
+        })
+    }
+    private fun addAddress(){
+        var title = binding.textInputEditTextAddressTitle.text.toString()
+        var district = binding.textInputEditTextAddressDistrict.text.toString()
+        var addressDetail = binding.textInputEditTextAddressDetail.text.toString()
+        user.address?.add(Address(title,"",addressDetail,district,"",""))
+        viewModel.postAddress(token.toString(),user).observe(viewLifecycleOwner,{
+            when(it.status){
+                Resource.Status.SUCCESS ->{
+                    Toast.makeText(requireContext(),"You added the address succesfully",Toast.LENGTH_SHORT).show()
+                    findNavController().navigateUp()
                 }
             }
         })
