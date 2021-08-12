@@ -25,7 +25,7 @@ class EditProfileFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentEditProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -65,7 +65,7 @@ class EditProfileFragment : BaseFragment() {
         })
 
         binding.buttonChangePasswordNavigation.setOnClickListener {
-            findNavController().navigate(EditProfileFragmentDirections.actionEditProfileFragment2ToChangePasswordFragment())
+            findNavController().navigate(EditProfileFragmentDirections.actionEditProfileFragment2ToChangePasswordFragment(user))
         }
         //UPDATE PROFILE
         binding.buttonUpdateProfile.setOnClickListener {

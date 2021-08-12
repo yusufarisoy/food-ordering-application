@@ -18,6 +18,12 @@ class AddAddressViewModel @Inject constructor(var apiRepository: ApiRepository) 
     private var token: Int = apiRepository.getInt(SharedPrefManager.TOKEN)
     private var user: MutableLiveData<UsersItem> = MutableLiveData()
 
+    fun getUser(): LiveData<UsersItem> = this.user
+
+    fun setUser(user: UsersItem) {
+        this.user.value = user
+    }
+
     fun getUserWithId(user_id: Int): LiveData<Resource<UsersResponse>> {
         return apiRepository.getUserWithId(user_id)
     }

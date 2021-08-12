@@ -21,19 +21,12 @@ class ProfileFragment : BaseFragment() {
 
     private val viewModel: ProfileViewModel by viewModels()
     private lateinit var binding: FragmentProfileBinding
-    private lateinit var viewPagerProfile: ViewPager2
-    private lateinit var user: UsersItem
-    private lateinit var nameTextView: TextView
-    private lateinit var surnameTextView: TextView
-    private lateinit var emailTextView: TextView
-    private lateinit var buttonAddress: Button
-    private lateinit var buttonOrderHistory: Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -47,23 +40,15 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun initViews() {
-        //textviews
-        nameTextView = binding.NameTextView
-        surnameTextView = binding.SurnameTextView
-        emailTextView = binding.EmailTextView
-
         //viewpager
-        viewPagerProfile = binding.viewPagerProfile
-        viewPagerProfile.adapter = ProfileViewPagerAdapter(activity as AppCompatActivity)
+        binding.viewPagerProfile.adapter = ProfileViewPagerAdapter(activity as AppCompatActivity)
 
         //tab item
-        buttonAddress = binding.buttonAddress
-        buttonOrderHistory = binding.buttonOrderHistory
-        buttonAddress.setOnClickListener{
-            viewPagerProfile.setCurrentItem(0)
+        binding.buttonAddress.setOnClickListener{
+            binding.viewPagerProfile.setCurrentItem(0)
         }
-        buttonOrderHistory.setOnClickListener{
-            viewPagerProfile.setCurrentItem(1)
+        binding.buttonOrderHistory.setOnClickListener{
+            binding.viewPagerProfile.setCurrentItem(1)
         }
 
         //profile button navigation
@@ -87,9 +72,9 @@ class ProfileFragment : BaseFragment() {
 
                 }
                 Resource.Status.SUCCESS -> {
-                    nameTextView.text = it.data?.get(0)?.name
-                    surnameTextView.text = it.data?.get(0)?.surname
-                    emailTextView.text = it.data?.get(0)?.email
+                    binding.NameTextView.text = it.data?.get(0)?.name
+                    binding.SurnameTextView.text = it.data?.get(0)?.surname
+                    binding.EmailTextView.text = it.data?.get(0)?.email
                 }
                 Resource.Status.ERROR -> {
 
@@ -100,7 +85,7 @@ class ProfileFragment : BaseFragment() {
 
     private fun initViewPager() {
         val adapter = ProfileViewPagerAdapter(requireActivity())
-        viewPagerProfile.adapter = adapter
+        binding.viewPagerProfile.adapter = adapter
     }
 
 }

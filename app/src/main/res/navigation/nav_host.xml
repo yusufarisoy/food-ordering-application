@@ -128,6 +128,9 @@
         <action
             android:id="@+id/action_changePasswordFragment_to_editProfileFragment2"
             app:destination="@id/editProfileFragment2" />
+        <argument
+            android:name="user"
+            app:argType="com.kodluyoruz.yahnifood.data.entity.UsersItem" />
     </fragment>
     <fragment
         android:id="@+id/mealAddingFragment"

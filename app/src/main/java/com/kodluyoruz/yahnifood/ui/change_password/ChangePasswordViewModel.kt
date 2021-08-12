@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.kodluyoruz.yahnifood.data.ApiRepository
 import com.kodluyoruz.yahnifood.data.entity.UsersItem
 import com.kodluyoruz.yahnifood.data.entity.UsersResponse
-import com.kodluyoruz.yahnifood.data.entity.dtos.UserDto
 import com.kodluyoruz.yahnifood.data.local.SharedPrefManager
 import com.kodluyoruz.yahnifood.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,9 +21,16 @@ class ChangePasswordViewModel @Inject constructor(var apiRepository: ApiReposito
         return apiRepository.getUserWithId(user_id)
     }
 
-    /*fun updateUser(user: UsersItem): LiveData<Resource<UsersItem>> {
-        return apiRepository.updateUser(user)
-    }*/
+    fun setUser(user: UsersItem) {
+        this.user.value = user
+    }
+
+    fun getUser(): LiveData<UsersItem> = this.user
+
+    fun changePassword(user: UsersItem, password: String): LiveData<Resource<UsersItem>> {
+        user.password = password
+        return apiRepository.updateUser(token.toString(), user)
+    }
 
     fun getToken(): Int = this.token
 }

@@ -1,8 +1,10 @@
 package com.kodluyoruz.yahnifood.data.entity
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import com.kodluyoruz.yahnifood.data.entity.Address
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class UsersItem(
     @SerializedName("address_list")
     var address: ArrayList<Address>?,
@@ -20,6 +22,6 @@ data class UsersItem(
     var photo_url: String,
     @SerializedName("surname")
     var surname: String
-)
+) : Parcelable
 
 
